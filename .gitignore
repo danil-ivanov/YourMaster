@@ -1,10 +1,5 @@
 # Created by http://www.gitignore.io
 
-### Xcode ###
-build
-*.xcodeproj/*
-!*.xcodeproj/project.pbxproj
-!*.xcworkspace/contents.xcworkspacedata
 
 
 ### Objective-C ###
@@ -12,7 +7,6 @@ build
 .DS_Store
 
 # Xcode
-xcuserdata/
 build/
 *.pbxuser
 !default.pbxuser

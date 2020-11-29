@@ -1,10 +1,4 @@
-//
-//  UIViewController+SetStatusBarColor.swift
-//  YourMaster
-//
-//  Created by Maxim Egorov on 24.09.2020.
-//  Copyright © 2020 Maxim Egorov. All rights reserved.
-//
+
 
 import UIKit
 
