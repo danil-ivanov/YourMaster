@@ -12,28 +12,26 @@ protocol CoordinatorInput: AnyObject {
 
 ///Координатор, который выбирает стартовый флоу приложения
 final class AppCoordinator: CoordinatorInput {
-    private let userDefaults: UserDefaultsWrapperProtocol
     private let coordinatorsAssembly: AssemblyFactory
 
     private var loginFlowCoordinator: (CoordinatorInput & LoginFlowCoordinatorOutput)?
 
-    init(coordinatorsAssembly: AssemblyFactory, navigationController: UINavigationController, userDefaults: UserDefaultsWrapperProtocol) {
+    init(coordinatorsAssembly: AssemblyFactory, navigationController: UINavigationController) {
         self.coordinatorsAssembly = coordinatorsAssembly
-        self.userDefaults = userDefaults
     }
     
     func start() {
-        guard let _ = try? userDefaults.getToken() else {
-            loginFlowCoordinator = coordinatorsAssembly.createLoginAssembly().coordinator()
-            loginFlowCoordinator?.onLoginSucces = { [weak self] in
-                DispatchQueue.main.async {
-                    self?.startShopsFlow()
-                }
-            }
-            loginFlowCoordinator?.start()
+        guard !AppShared.storage.authorized else {
+            startShopsFlow()
             return
         }
-        startShopsFlow()
+        loginFlowCoordinator = coordinatorsAssembly.createLoginAssembly().coordinator()
+        loginFlowCoordinator?.onLoginSucces = { [weak self] in
+            DispatchQueue.main.async {
+                self?.startShopsFlow()
+            }
+        }
+        loginFlowCoordinator?.start()
     }
     
     private func startShopsFlow() {

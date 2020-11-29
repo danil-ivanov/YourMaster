@@ -17,7 +17,6 @@
 		82073DDE249EA3E300BDAF9D /* UIViewController+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82073DDD249EA3E300BDAF9D /* UIViewController+Identifier.swift */; };
 		82073DE0249EAF2B00BDAF9D /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82073DDF249EAF2B00BDAF9D /* UserDefaultsWrapper.swift */; };
 		82073DE7249EB2D300BDAF9D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82073DE6249EB2D300BDAF9D /* AppCoordinator.swift */; };
-		8208B4B6251B52B10069F1D0 /* HasDependenciesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8208B4B5251B52B10069F1D0 /* HasDependenciesProtocol.swift */; };
 		820F6B6925485C8400499EDD /* ShopsInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820F6B6825485C8400499EDD /* ShopsInfoPresenter.swift */; };
 		820F6B6D254860CF00499EDD /* ShopsScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820F6B6C254860CF00499EDD /* ShopsScrollViewDelegate.swift */; };
 		820F6B772549BA9500499EDD /* BaseShopInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820F6B762549BA9500499EDD /* BaseShopInfoCell.swift */; };
@@ -78,7 +77,6 @@
 		8215B09F249268FC0002BD55 /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B09E249268FC0002BD55 /* AuthorizationError.swift */; };
 		8215B0A624927DBC0002BD55 /* Pods_YourMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BD9D53E8BF4ED794FC9EA4A /* Pods_YourMaster.framework */; };
 		8215B0AC24927E580002BD55 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B0AB24927E580002BD55 /* VerifyViewController.swift */; };
-		8215B0AE24927E640002BD55 /* VerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8215B0AD24927E640002BD55 /* VerifyViewController.xib */; };
 		8215B0B5249526D30002BD55 /* BasicRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B0B4249526D30002BD55 /* BasicRouter.swift */; };
 		8215B0B724952A290002BD55 /* StyleWrapper+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B0B624952A290002BD55 /* StyleWrapper+UITextField.swift */; };
 		8215B0BC24958E590002BD55 /* PinCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B0BB24958E580002BD55 /* PinCodeTextField.swift */; };
@@ -154,6 +152,9 @@
 		82E7BAF3248BD52000106432 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E7BAF2248BD52000106432 /* LoginViewController.xib */; };
 		82E7BAF6248BD53E00106432 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7BAF5248BD53E00106432 /* LoginViewController.swift */; };
 		82EFB9A2251B56060014912D /* UIViewController+ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EFB9A1251B56060014912D /* UIViewController+ShowAlert.swift */; };
+		83617D8F2574363E0026D91B /* AppShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83617D8E2574363E0026D91B /* AppShared.swift */; };
+		83617D912574366F0026D91B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83617D902574366F0026D91B /* Storage.swift */; };
+		83617D94257436A40026D91B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83617D93257436A40026D91B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,7 +178,6 @@
 		82073DDD249EA3E300BDAF9D /* UIViewController+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Identifier.swift"; sourceTree = "<group>"; };
 		82073DDF249EAF2B00BDAF9D /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		82073DE6249EB2D300BDAF9D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		8208B4B5251B52B10069F1D0 /* HasDependenciesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDependenciesProtocol.swift; sourceTree = "<group>"; };
 		820F6B6825485C8400499EDD /* ShopsInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopsInfoPresenter.swift; sourceTree = "<group>"; };
 		820F6B6C254860CF00499EDD /* ShopsScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopsScrollViewDelegate.swift; sourceTree = "<group>"; };
 		820F6B762549BA9500499EDD /* BaseShopInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShopInfoCell.swift; sourceTree = "<group>"; };
@@ -237,7 +237,6 @@
 		8215B09B24925FE80002BD55 /* AuthorizationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequest.swift; sourceTree = "<group>"; };
 		8215B09E249268FC0002BD55 /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
 		8215B0AB24927E580002BD55 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
-		8215B0AD24927E640002BD55 /* VerifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerifyViewController.xib; sourceTree = "<group>"; };
 		8215B0B4249526D30002BD55 /* BasicRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicRouter.swift; sourceTree = "<group>"; };
 		8215B0B624952A290002BD55 /* StyleWrapper+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StyleWrapper+UITextField.swift"; sourceTree = "<group>"; };
 		8215B0BB24958E580002BD55 /* PinCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCodeTextField.swift; sourceTree = "<group>"; };
@@ -317,6 +316,9 @@
 		82E7BAF2248BD52000106432 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		82E7BAF5248BD53E00106432 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		82EFB9A1251B56060014912D /* UIViewController+ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowAlert.swift"; sourceTree = "<group>"; };
+		83617D8E2574363E0026D91B /* AppShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShared.swift; sourceTree = "<group>"; };
+		83617D902574366F0026D91B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		83617D93257436A40026D91B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9BD9D53E8BF4ED794FC9EA4A /* Pods_YourMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0333579E4A22D59327FD750 /* Pods-YourMaster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourMaster.debug.xcconfig"; path = "Target Support Files/Pods-YourMaster/Pods-YourMaster.debug.xcconfig"; sourceTree = "<group>"; };
 		E97A3C0A09B9B481A0AC0CDC /* Pods-YourMaster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourMaster.release.xcconfig"; path = "Target Support Files/Pods-YourMaster/Pods-YourMaster.release.xcconfig"; sourceTree = "<group>"; };
@@ -363,7 +365,6 @@
 			isa = PBXGroup;
 			children = (
 				8215B0AB24927E580002BD55 /* VerifyViewController.swift */,
-				8215B0AD24927E640002BD55 /* VerifyViewController.xib */,
 				8204E3EA251A3E550070FE4E /* VerifyViewInput.swift */,
 			);
 			path = View;
@@ -384,6 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				82073DDF249EAF2B00BDAF9D /* UserDefaultsWrapper.swift */,
+				83617D902574366F0026D91B /* Storage.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -796,6 +798,7 @@
 		8256F22924A1398300FB4ACC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				83617D92257436980026D91B /* User */,
 				8256F22A24A1398C00FB4ACC /* Shop */,
 			);
 			path = Models;
@@ -1041,7 +1044,7 @@
 			isa = PBXGroup;
 			children = (
 				82D234282507BAA400699612 /* ServiceAssembly.swift */,
-				8208B4B5251B52B10069F1D0 /* HasDependenciesProtocol.swift */,
+				83617D8E2574363E0026D91B /* AppShared.swift */,
 			);
 			path = "App Dependencies";
 			sourceTree = "<group>";
@@ -1122,6 +1125,14 @@
 				82DE05C0250A5003003E0407 /* Routable.swift */,
 			);
 			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
+		83617D92257436980026D91B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				83617D93257436A40026D91B /* User.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		F2A42041779F7F5941FCACEF /* Frameworks */ = {
@@ -1220,7 +1231,6 @@
 				82E7BADD248BD3F700106432 /* LaunchScreen.storyboard in Resources */,
 				8215AFCB2490016B0002BD55 /* Localizable.strings in Resources */,
 				8215B08A249178860002BD55 /* sf-ui-display-ultralight-58646b19bf205.otf in Resources */,
-				8215B0AE24927E640002BD55 /* VerifyViewController.xib in Resources */,
 				8215B08E249178860002BD55 /* sf-ui-display-light-58646b33e0551.otf in Resources */,
 				8215B08D249178860002BD55 /* sf-ui-display-heavy-586470160b9e5.otf in Resources */,
 				8215B08F249178860002BD55 /* sf-ui-display-black-58646a6b80d5a.otf in Resources */,
@@ -1361,6 +1371,7 @@
 				82BC302E2523B35B0073A3F3 /* ViewHeaderInput.swift in Sources */,
 				82073DD2249E9EF600BDAF9D /* ShopsMapViewController.swift in Sources */,
 				825F0E832500F02100C7F708 /* ShopsFlowCoordinator.swift in Sources */,
+				83617D8F2574363E0026D91B /* AppShared.swift in Sources */,
 				820F6B96254AE1EC00499EDD /* CollectionCell.swift in Sources */,
 				82BC300A25239BC30073A3F3 /* ShopsListPresenter.swift in Sources */,
 				82BC301225239EC50073A3F3 /* ShopsListViewInput.swift in Sources */,
@@ -1375,6 +1386,7 @@
 				8215B06D249006A50002BD55 /* NetworkResult.swift in Sources */,
 				82D2342E2507BBD700699612 /* LoginAssemblyProtocol.swift in Sources */,
 				8215B067249006920002BD55 /* MultipartFormData.swift in Sources */,
+				83617D94257436A40026D91B /* User.swift in Sources */,
 				8215B06A2490069C0002BD55 /* HTTPMethod.swift in Sources */,
 				820F6BA6254AE91400499EDD /* UICollectionView+registerCellClass.swift in Sources */,
 				82D0C12525010D3E00E260A0 /* ShopsMapViewInput.swift in Sources */,
@@ -1433,10 +1445,10 @@
 				8215B06E249006A80002BD55 /* RequestParameters.swift in Sources */,
 				82DE05C1250A5003003E0407 /* Routable.swift in Sources */,
 				825F0E7D24F93F8300C7F708 /* ViewHeader.swift in Sources */,
-				8208B4B6251B52B10069F1D0 /* HasDependenciesProtocol.swift in Sources */,
 				82AB8B5325542CAA00285A73 /* ReviewsCellModel.swift in Sources */,
 				820F6B9A254AE21C00499EDD /* CollectionCellModel.swift in Sources */,
 				82EFB9A2251B56060014912D /* UIViewController+ShowAlert.swift in Sources */,
+				83617D912574366F0026D91B /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1590,14 +1602,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8K33J6D43K;
+				DEVELOPMENT_TEAM = 5939ANS2ZB;
 				INFOPLIST_FILE = YourMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Egorov.YourMaster;
+				PRODUCT_BUNDLE_IDENTIFIER = Egorov.YourMaste;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1610,14 +1622,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8K33J6D43K;
+				DEVELOPMENT_TEAM = 5939ANS2ZB;
 				INFOPLIST_FILE = YourMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Egorov.YourMaster;
+				PRODUCT_BUNDLE_IDENTIFIER = Egorov.YourMaste;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

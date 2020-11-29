@@ -3,12 +3,9 @@ import Foundation
 
 final class AuthorizationService: AuthorizationServiceProtocol {
     private let networkDispatcher: Dispatcher
-    private let userDefaults: UserDefaultsWrapperProtocol
-    private let approvedString = "\"APPROVED\""
     
-    init(networkDispatcher: Dispatcher, userDefaults: UserDefaultsWrapperProtocol) {
+    init(networkDispatcher: Dispatcher) {
         self.networkDispatcher = networkDispatcher
-        self.userDefaults = userDefaults
     }
     
     func login(with phone: String, completion: @escaping AuthorizationCompletion) {
@@ -42,17 +39,14 @@ final class AuthorizationService: AuthorizationServiceProtocol {
             case .success(let response):
                 let code = response.statusCode
                 if code >= 200 && code <= 299 {
-                    let string = String(data: response.data, encoding: .utf8)
-                    if string == self.approvedString {
-                        guard let authToken = response.response?.allHeaderFields[AppDefaults.UserDefaults.token] as? String else {
-                            completion(Result.failure(AuthorizationError.forbidden))
-                            return
-                        }
-                        self.userDefaults.updateToken(token: authToken)
-                        completion(Result.success(()))
+                    guard let authToken = response.response?.allHeaderFields[AppDefaults.UserDefaults.token] as? String,
+                            let user = try? JSONDecoder().decode(User.self, from: response.data) else {
+                        completion(Result.failure(AuthorizationError.invalidCode))
                         return
                     }
-                    completion(Result.failure(AuthorizationError.invalidCode))
+                    AppShared.storage.update(token: authToken)
+                    AppShared.storage.update(user: user)
+                    completion(Result.success(()))
                     return
                 }
                 if code >= 400 && code <= 499 {
