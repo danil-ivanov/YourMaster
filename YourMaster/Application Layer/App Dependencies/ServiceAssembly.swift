@@ -12,7 +12,7 @@ final class ServiceAssembly {
 
 extension ServiceAssembly: ServiceAssemblyProtocol {
     func authorizationService() -> AuthorizationServiceProtocol {
-        return AuthorizationService(networkDispatcher: networkDispatcher, userDefaults: userDefaults)
+        return AuthorizationService(networkDispatcher: networkDispatcher)
     }
     
     func shopsService() -> ShopsServiceProtocol {

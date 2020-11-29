@@ -10,24 +10,50 @@ protocol VerifyViewOutput: AnyObject {
 }
 
 final class VerifyViewController: UIViewController {
-    @IBOutlet private weak var firstLabel: UILabel!
-    @IBOutlet private weak var secondLabel: UILabel!
-    @IBOutlet private weak var pinTextField: UITextField!
-    @IBOutlet private weak var invalidCodeLabel: UILabel!
-    @IBOutlet private weak var resendCodeButton: UIButton!
+    private let firstLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let secondLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let pinTextField: UITextField = {
+        let textField = PinCodeTextField(frame: .zero)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private let invalidCodeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let resendCodeButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     var output: VerifyViewOutput?
     
     init() {
-        super.init(nibName: VerifyViewController.identifier, bundle: nil)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        setupViews()
         setupComponents()
         setupActions()
         output?.configure()
@@ -37,7 +63,7 @@ final class VerifyViewController: UIViewController {
         super.viewWillAppear(animated)
         setupNavigationBar()
     }
-    
+
     func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: true)
         let appearance = UINavigationBarAppearance()
@@ -49,6 +75,36 @@ final class VerifyViewController: UIViewController {
         navigationController?.navigationBar.shouldRemoveShadow(true)
     }
     
+    private func setupViews() {
+        view.addSubview(firstLabel)
+        view.addSubview(secondLabel)
+        view.addSubview(pinTextField)
+        view.addSubview(invalidCodeLabel)
+        view.addSubview(resendCodeButton)
+        
+        NSLayoutConstraint.activate([
+            firstLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            firstLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            firstLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55),
+            firstLabel.bottomAnchor.constraint(equalTo: secondLabel.topAnchor, constant: -25),
+
+            secondLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            secondLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            secondLabel.bottomAnchor.constraint(equalTo: pinTextField.topAnchor, constant: -25),
+
+            pinTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            pinTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            pinTextField.bottomAnchor.constraint(equalTo: invalidCodeLabel.topAnchor, constant: -15),
+            pinTextField.heightAnchor.constraint(equalToConstant: 50),
+
+            invalidCodeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+            invalidCodeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            invalidCodeLabel.bottomAnchor.constraint(equalTo: resendCodeButton.topAnchor, constant: -25),
+
+resendCodeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
+            resendCodeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80),
+        ])
+    }
     
     func setupComponents() {
         firstLabel.text = "Введите код подтверждения"
@@ -80,6 +136,7 @@ final class VerifyViewController: UIViewController {
     @objc
     func resendDidTap(_ sender: UIButton) {
         output?.didRequestResendSMS()
+        print("resend tap")
     }
 }
 

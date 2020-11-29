@@ -9,5 +9,6 @@ enum AppDefaults {
     
     enum UserDefaults {
         static let token = "X-Auth-Token"
+        static let user = "currentUser"
     }
 }
