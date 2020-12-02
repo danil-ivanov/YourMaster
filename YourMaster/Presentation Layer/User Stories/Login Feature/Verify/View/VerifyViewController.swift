@@ -136,7 +136,6 @@ resendCodeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:
     @objc
     func resendDidTap(_ sender: UIButton) {
         output?.didRequestResendSMS()
-        print("resend tap")
     }
 }
 

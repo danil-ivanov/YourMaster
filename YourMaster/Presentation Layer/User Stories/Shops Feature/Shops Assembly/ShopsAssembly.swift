@@ -8,12 +8,13 @@ protocol ShopsServicesProtocol {
 }
 
 final class ShopsAssembly {
-    var serviceAssembly: ShopsServicesProtocol
+    private let serviceAssembly: ShopsServicesProtocol
+    private let coordinatorAssembly: MenuAssemblyFactoryProtocol
     private lazy var shopsService: ShopsServiceProtocol = serviceAssembly.shopsService()
     private lazy var locationManager: CLLocationManager = serviceAssembly.locationManager()
     
     private lazy var flowCoordinator: ShopsFlowCoordinator = {
-        let flowCoordinator = ShopsFlowCoordinator()
+        let flowCoordinator = ShopsFlowCoordinator(coordinatorAssembly: coordinatorAssembly)
         let interactor = ShopsInteractor(shopService: shopsService, locationManager: locationManager)
         let router = ShopsRouter(assembly: self)
         flowCoordinator.router = router
@@ -22,7 +23,8 @@ final class ShopsAssembly {
         return flowCoordinator
     }()
     
-    init(serviceAssembly: ShopsServicesProtocol) {
+    init(coordinatorAssembly: MenuAssemblyFactoryProtocol, serviceAssembly: ShopsServicesProtocol) {
+        self.coordinatorAssembly = coordinatorAssembly
         self.serviceAssembly = serviceAssembly
     }
     

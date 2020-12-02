@@ -67,7 +67,6 @@ class StorkView: UIView {
             let newHeight = frame.height - (newValue - frame.origin.y)
             frame.origin.y = newValue
             frame.size.height = newHeight
-            print(frame.origin.y)
         }
     }
     
@@ -284,14 +283,10 @@ private extension StorkView {
 }
 
 extension StorkView: UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        print("begginDragging")
-    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y: CGFloat = scrollView.contentOffset.y
         let newHeaderViewHeight: CGFloat = headerHeight - y
-        print(y)
 
         if newHeaderViewHeight > Dimensions.Header.height {
             headerHeight = Dimensions.Header.height

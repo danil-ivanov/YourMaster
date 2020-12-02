@@ -87,6 +87,12 @@
 		8247B1D825742E3800BA32CA /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B1D425742E3800BA32CA /* TableCell.swift */; };
 		8247B1D925742E3800BA32CA /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B1D525742E3800BA32CA /* TableSection.swift */; };
 		8247B1DD25742EAA00BA32CA /* UITableView+registerCellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B1DC25742EA900BA32CA /* UITableView+registerCellClass.swift */; };
+		8247B206257539D200BA32CA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B205257539D200BA32CA /* MenuViewController.swift */; };
+		8247B20C25753A1500BA32CA /* MenuFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B20B25753A1400BA32CA /* MenuFlowCoordinator.swift */; };
+		8247B21025753A5900BA32CA /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B20F25753A5900BA32CA /* MenuRouter.swift */; };
+		8247B21425753AA500BA32CA /* MenuAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B21325753AA500BA32CA /* MenuAssembly.swift */; };
+		8247B21825753BA700BA32CA /* MenuAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B21725753BA700BA32CA /* MenuAssemblyProtocol.swift */; };
+		8247B21C2575475200BA32CA /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B21B2575475200BA32CA /* MenuView.swift */; };
 		8255EE68252C9D6E00EB4803 /* BottomListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255EE67252C9D6E00EB4803 /* BottomListView.swift */; };
 		8255EE6E252C9F6A00EB4803 /* UIScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8255EE6D252C9F6A00EB4803 /* UIScreen+Extensions.swift */; };
 		8256F22324A1364200FB4ACC /* MapStyle-Light.json in Resources */ = {isa = PBXBuildFile; fileRef = 8256F22224A1347900FB4ACC /* MapStyle-Light.json */; };
@@ -247,6 +253,12 @@
 		8247B1D425742E3800BA32CA /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableCell.swift; path = "YourMaster/Application Layer/Resources/TableCellModel/TableCell.swift"; sourceTree = SOURCE_ROOT; };
 		8247B1D525742E3800BA32CA /* TableSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableSection.swift; path = "YourMaster/Application Layer/Resources/TableCellModel/TableSection.swift"; sourceTree = SOURCE_ROOT; };
 		8247B1DC25742EA900BA32CA /* UITableView+registerCellClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+registerCellClass.swift"; sourceTree = "<group>"; };
+		8247B205257539D200BA32CA /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		8247B20B25753A1400BA32CA /* MenuFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFlowCoordinator.swift; sourceTree = "<group>"; };
+		8247B20F25753A5900BA32CA /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
+		8247B21325753AA500BA32CA /* MenuAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAssembly.swift; sourceTree = "<group>"; };
+		8247B21725753BA700BA32CA /* MenuAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAssemblyProtocol.swift; sourceTree = "<group>"; };
+		8247B21B2575475200BA32CA /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		8255EE67252C9D6E00EB4803 /* BottomListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomListView.swift; sourceTree = "<group>"; };
 		8255EE6D252C9F6A00EB4803 /* UIScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extensions.swift"; sourceTree = "<group>"; };
 		8256F22224A1347900FB4ACC /* MapStyle-Light.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "MapStyle-Light.json"; sourceTree = "<group>"; };
@@ -641,6 +653,7 @@
 		8215B061249005740002BD55 /* User Stories */ = {
 			isa = PBXGroup;
 			children = (
+				8247B204257539AD00BA32CA /* Menu */,
 				8271F1BC254855840062EB34 /* Shop Info Feature */,
 				825F0E802500EFC900C7F708 /* Shops Feature */,
 				82D234242507B82400699612 /* Login Feature */,
@@ -768,6 +781,19 @@
 				8247B1D325742E3700BA32CA /* TableSectionModel.swift */,
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		8247B204257539AD00BA32CA /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				8247B205257539D200BA32CA /* MenuViewController.swift */,
+				8247B20B25753A1400BA32CA /* MenuFlowCoordinator.swift */,
+				8247B20F25753A5900BA32CA /* MenuRouter.swift */,
+				8247B21325753AA500BA32CA /* MenuAssembly.swift */,
+				8247B21725753BA700BA32CA /* MenuAssemblyProtocol.swift */,
+				8247B21B2575475200BA32CA /* MenuView.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		8255EE66252C9D5B00EB4803 /* NewStork */ = {
@@ -1358,6 +1384,7 @@
 				8247B1D625742E3800BA32CA /* TableCellModel.swift in Sources */,
 				8215B073249031C90002BD55 /* AuthorizationService.swift in Sources */,
 				8204E3EB251A3E550070FE4E /* VerifyViewInput.swift in Sources */,
+				8247B21025753A5900BA32CA /* MenuRouter.swift in Sources */,
 				82D0C12B2501119000E260A0 /* ActivityIndicatorView.swift in Sources */,
 				8215B068249006960002BD55 /* Dispatcher.swift in Sources */,
 				8256F23024A13A1F00FB4ACC /* Location.swift in Sources */,
@@ -1381,6 +1408,7 @@
 				82073DD6249E9F0D00BDAF9D /* ShopsRouter.swift in Sources */,
 				82CEE6D524D096CE001251A5 /* ShopCellModel.swift in Sources */,
 				8215B069249006990002BD55 /* DispatcherResponse.swift in Sources */,
+				8247B21425753AA500BA32CA /* MenuAssembly.swift in Sources */,
 				8204E3E8251A3D850070FE4E /* VerifyPresenter.swift in Sources */,
 				820F6BAF254AFBEC00499EDD /* DescriptionShopCellModel.swift in Sources */,
 				8215B06D249006A50002BD55 /* NetworkResult.swift in Sources */,
@@ -1391,6 +1419,7 @@
 				820F6BA6254AE91400499EDD /* UICollectionView+registerCellClass.swift in Sources */,
 				82D0C12525010D3E00E260A0 /* ShopsMapViewInput.swift in Sources */,
 				820F6C0D2551951400499EDD /* ContactCellModel.swift in Sources */,
+				8247B206257539D200BA32CA /* MenuViewController.swift in Sources */,
 				8215AFCD249001780002BD55 /* Localizable.swift in Sources */,
 				82680ED124D2C48A007A2609 /* StorkView.swift in Sources */,
 				82D234262507B85D00699612 /* LoginFeatureRouter.swift in Sources */,
@@ -1411,11 +1440,13 @@
 				8261F36D24AA57EA006FB3C3 /* ShopsListViewController.swift in Sources */,
 				8215AFC9249001480002BD55 /* AppLocalization.swift in Sources */,
 				8288120C25598E8200383213 /* UILabel+Extension.swift in Sources */,
+				8247B21825753BA700BA32CA /* MenuAssemblyProtocol.swift in Sources */,
 				820F6C092551937A00499EDD /* ContactCell.swift in Sources */,
 				8215AFC6249000F30002BD55 /* AppDefaults.swift in Sources */,
 				820F6BFF254C49BC00499EDD /* StandardTextSection.swift in Sources */,
 				8215B05B2490039C0002BD55 /* Stylable.swift in Sources */,
 				8215B098249251E00002BD55 /* StyleWrapper+UIButton.swift in Sources */,
+				8247B21C2575475200BA32CA /* MenuView.swift in Sources */,
 				82C7F535252F81040094E5D1 /* MapToolBarView.swift in Sources */,
 				8256F22624A1390B00FB4ACC /* ShopsService.swift in Sources */,
 				8256F23324A13E1500FB4ACC /* ShopRequest.swift in Sources */,
@@ -1431,6 +1462,7 @@
 				829AA39124A793F0004CA3A6 /* ClusterManager.swift in Sources */,
 				8215AFC4249000E40002BD55 /* AppConfiguration.swift in Sources */,
 				8215B0BE24964C350002BD55 /* VerificationRequest.swift in Sources */,
+				8247B20C25753A1500BA32CA /* MenuFlowCoordinator.swift in Sources */,
 				820F6BAB254AFA5700499EDD /* DescriptionShopInfoCell.swift in Sources */,
 				8256F23724A14F1000FB4ACC /* StyleWrapper+GMSMapView.swift in Sources */,
 				8215B09C24925FE80002BD55 /* AuthorizationRequest.swift in Sources */,
@@ -1602,14 +1634,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5939ANS2ZB;
+				DEVELOPMENT_TEAM = 8K33J6D43K;
 				INFOPLIST_FILE = YourMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Egorov.YourMaste;
+				PRODUCT_BUNDLE_IDENTIFIER = Egorov.YourMaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1622,14 +1654,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5939ANS2ZB;
+				DEVELOPMENT_TEAM = 8K33J6D43K;
 				INFOPLIST_FILE = YourMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Egorov.YourMaste;
+				PRODUCT_BUNDLE_IDENTIFIER = Egorov.YourMaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

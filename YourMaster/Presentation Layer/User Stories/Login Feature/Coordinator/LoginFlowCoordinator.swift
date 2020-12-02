@@ -43,7 +43,7 @@ extension LoginFlowCoordinator: LoginInteractorOutput {
     }
     
     func didSendCode(to phone: String) {
-        //loginPresenter?.stopSending()
+        loginPresenter?.stopSending()
         router?.showVerifyScene(with: phone)
     }
     

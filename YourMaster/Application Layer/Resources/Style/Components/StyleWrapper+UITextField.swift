@@ -14,7 +14,7 @@ extension StyleWrapper where Element: UITextField {
     
     static func pinStyle(spacing: CGFloat) -> StyleWrapper {
         return .wrap { textField in
-            textField.defaultTextAttributes.updateValue(spacing, forKey: NSAttributedString.Key.kern)
+            //textField.defaultTextAttributes.updateValue(spacing, forKey: NSAttributedString.Key.kern)
             textField.borderStyle = .none
             textField.keyboardType = .phonePad
             textField.textContentType = .oneTimeCode

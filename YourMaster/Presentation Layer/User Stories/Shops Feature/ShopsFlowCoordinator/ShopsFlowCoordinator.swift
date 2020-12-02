@@ -9,6 +9,12 @@ final class ShopsFlowCoordinator {
     weak var infoPresenter: ShopInfoPresenter?
     var router: ShopsRouterInput?
     var interactor: ShopsInteractorInput?
+    
+    private let coordinatorAssembly: MenuAssemblyFactoryProtocol
+    
+    init(coordinatorAssembly: MenuAssemblyFactoryProtocol) {
+        self.coordinatorAssembly = coordinatorAssembly
+    }
 }
 
 extension ShopsFlowCoordinator: ShopsMapPresenterOutput {
@@ -30,6 +36,7 @@ extension ShopsFlowCoordinator: ShopsMapPresenterOutput {
     
     func setupShopsList() {
         router?.showFloatingPanel()
+        coordinatorAssembly.createMenuAssembly().coordinator().start()
     }
 }
 
