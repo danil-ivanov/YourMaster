@@ -38,8 +38,4 @@ final class AppCoordinator: CoordinatorInput {
         loginFlowCoordinator = nil
         coordinatorsAssembly.createShopsAssembly().coordinator().start()
     }
-    
-    deinit {
-        print("Deinit AppCoordinator")
-    }
 }

@@ -8,6 +8,12 @@ final class AssemblyFactory {
     }
 }
 
+extension AssemblyFactory: MenuAssemblyFactoryProtocol {
+    func createMenuAssembly() -> MenuFlowCoordinatorAssemblyProtocol {
+        return MenuAssembly()
+    }
+}
+
 extension AssemblyFactory: LoginAssemblyFactoryProtocol {
     func createLoginAssembly() -> LoginFlowCoordinatorAssemblyProtocol {
         return LoginAssembly(serviceAssembly: serviceAssembly)
@@ -16,6 +22,6 @@ extension AssemblyFactory: LoginAssemblyFactoryProtocol {
 
 extension AssemblyFactory: ShopsAssemblyFactoryProtocol {
     func createShopsAssembly() -> ShopsFlowCoordinatorAssemblyProtocol {
-        return ShopsAssembly(serviceAssembly: serviceAssembly)
+        return ShopsAssembly(coordinatorAssembly: self, serviceAssembly: serviceAssembly)
     }
 }

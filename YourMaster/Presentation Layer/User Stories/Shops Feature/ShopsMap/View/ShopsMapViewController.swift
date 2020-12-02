@@ -102,13 +102,11 @@ extension ShopsMapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         let zoom = position.zoom
-        print(zoom)
     }
 }
 
 extension ShopsMapViewController: GMUClusterManagerDelegate {
     func clusterManager(_ clusterManager: GMUClusterManager, didTap clusterItem: GMUClusterItem) -> Bool {
-        print("tap")
         return true
     }
 }

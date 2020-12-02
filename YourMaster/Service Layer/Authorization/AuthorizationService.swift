@@ -65,8 +65,4 @@ final class AuthorizationService: AuthorizationServiceProtocol {
     func logout() {
         
     }
-    
-    deinit {
-        print("Deinit Authorization")
-    }
 }

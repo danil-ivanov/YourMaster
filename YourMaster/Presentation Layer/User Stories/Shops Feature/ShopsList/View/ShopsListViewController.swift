@@ -66,6 +66,10 @@ final class ShopsListViewController: UIViewController {
         return view
     }()
     
+    private var menuView: MenuViewInput? {
+        return view.superview?.subviews.first(where: { $0 is MenuView }) as? MenuViewInput
+    }
+    
     private var isSearching: Bool = false
     
     private var myLocationButtonTopOffset: CGFloat?
@@ -125,6 +129,7 @@ final class ShopsListViewController: UIViewController {
     
     private func setupActions() {
         myLocationButton.addTarget(self, action: #selector(myLocationButtonDidTap), for: .touchUpInside)
+        toolbarView.menuButton.addTarget(self, action: #selector(menuButtonDidTap), for: .touchUpInside)
     }
     
     private func setupTableView() {
@@ -137,6 +142,12 @@ final class ShopsListViewController: UIViewController {
     func myLocationButtonDidTap() {
         ImpactFeedbackGenerator.impactOccured()
         output?.myLocationButtonDidTap()
+    }
+    
+    @objc
+    func menuButtonDidTap() {
+        ImpactFeedbackGenerator.impactOccured()
+        menuView?.openMenu()
     }
 }
 
