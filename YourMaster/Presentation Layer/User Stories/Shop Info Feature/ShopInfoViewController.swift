@@ -120,6 +120,10 @@ extension ShopInfoViewController: UITableViewDelegate {
         output?.congigure(header: header, in: section)
         return header
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output?.didSelectRow(indexPath.row, in: indexPath.section)
+    }
 }
 
 extension ShopInfoViewController: UINavigationControllerDelegate {

@@ -43,6 +43,7 @@ extension ShopsInteractor: ShopsInteractorInput {
     
     func requestLocation() {
         if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
             locationManager.requestLocation()
             return
         }
