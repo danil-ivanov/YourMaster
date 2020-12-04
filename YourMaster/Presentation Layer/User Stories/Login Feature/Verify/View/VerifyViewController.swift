@@ -40,9 +40,10 @@ final class VerifyViewController: UIViewController {
         return button
     }()
 
-    var output: VerifyViewOutput?
+    private let output: VerifyViewOutput
     
-    init() {
+    init(output: VerifyViewOutput) {
+        self.output = output
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -56,7 +57,7 @@ final class VerifyViewController: UIViewController {
         setupViews()
         setupComponents()
         setupActions()
-        output?.configure()
+        output.configure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -135,7 +136,7 @@ resendCodeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:
     
     @objc
     func resendDidTap(_ sender: UIButton) {
-        output?.didRequestResendSMS()
+        output.didRequestResendSMS()
     }
 }
 
@@ -184,7 +185,7 @@ extension VerifyViewController: UITextFieldDelegate {
         let currentString = textField.text ?? ""
         let newString = NSString(string: currentString).replacingCharacters(in: range, with: string)
         if newString.count == 4 {
-            output?.didRequestVerify(code: newString)
+            output.didRequestVerify(code: newString)
         }
         return newString.count <= maxLength
     }

@@ -16,6 +16,8 @@ final class ShopsInteractor: NSObject {
     
     private var isFirstUpdateLocation: Bool
     
+    private var defferredGetShops: (() -> ())?
+    
     init(shopService: ShopsServiceProtocol, locationManager: CLLocationManager) {
         self.shopService = shopService
         self.locationManager = locationManager
@@ -27,6 +29,12 @@ final class ShopsInteractor: NSObject {
 
 extension ShopsInteractor: ShopsInteractorInput {
     func getShops(radius: Double) {
+        if isFirstUpdateLocation {
+            defferredGetShops = { [weak self, radius] in
+                self?.getShops(radius: radius)
+            }
+            return
+        }
         guard let coordinate = locationManager.location?.coordinate else {
             return
         }
@@ -66,6 +74,8 @@ extension ShopsInteractor: CLLocationManagerDelegate {
         if let location = locations.first, isFirstUpdateLocation {
             isFirstUpdateLocation = false
             output?.didUpdateLocation(location: location)
+            defferredGetShops?()
+            defferredGetShops = nil
         }
     }
     

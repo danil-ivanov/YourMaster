@@ -7,13 +7,19 @@ final class ShopsFlowCoordinator {
     weak var mapPresenter: ShopsMapPresenterInput?
     weak var listPresenter: ShopsListPresenter?
     weak var infoPresenter: ShopInfoPresenter?
-    var router: ShopsRouterInput?
-    var interactor: ShopsInteractorInput?
+    private let router: ShopsRouterInput
+    private let interactor: ShopsInteractorInput
     
-    private let coordinatorAssembly: MenuAssemblyFactoryProtocol
+    private let coordinatorAssembly: MenuAssemblyFactoryProtocol & OrderAssemblyFactoryProtocol
     
-    init(coordinatorAssembly: MenuAssemblyFactoryProtocol) {
+    private var orderFlowCoordinator: (CoordinatorInput & OrderFlowCoordinatorOutput)?
+    
+    init(coordinatorAssembly: MenuAssemblyFactoryProtocol & OrderAssemblyFactoryProtocol,
+         router: ShopsRouterInput,
+         interactor: ShopsInteractorInput) {
         self.coordinatorAssembly = coordinatorAssembly
+        self.router = router
+        self.interactor = interactor
     }
 }
 
@@ -27,15 +33,15 @@ extension ShopsFlowCoordinator: ShopsMapPresenterOutput {
     }
     
     func didRequestShops() {
-        interactor?.getShops(radius: 10000)
+        interactor.getShops(radius: 10000)
     }
     
     func didRequestLocation() {
-        interactor?.requestLocation()
+        interactor.requestLocation()
     }
     
     func setupShopsList() {
-        router?.showFloatingPanel()
+        router.showFloatingPanel()
         coordinatorAssembly.createMenuAssembly().coordinator().start()
     }
 }
@@ -66,25 +72,25 @@ extension ShopsFlowCoordinator: ShopsListPresenterOutput {
     }
     
     func didRequestPresentMyLocation() {
-        if let location = interactor?.getCurrentLocation() {
+        if let location = interactor.getCurrentLocation() {
             mapPresenter?.presentMyLocation(location: location)
         }
     }
     
     func didSelect(shop: Shop) {
-        router?.showInfo(shop: shop)
+        router.showInfo(shop: shop)
     }
 }
 
 extension ShopsFlowCoordinator: CoordinatorInput {
     func start() {
-        router?.showMap()
+        router.showMap()
     }
 }
 
 extension ShopsFlowCoordinator: ShopInfoPresenterOutput {
     func showDescriptionViewer(description: String) {
-        router?.showDescriptionViewer(description: description)
+        router.showDescriptionViewer(description: description)
     }
     
     func showPhotosViewer() {
@@ -93,5 +99,13 @@ extension ShopsFlowCoordinator: ShopInfoPresenterOutput {
     
     func showReviewsView() {
         
+    }
+    
+    func showServices() {
+        orderFlowCoordinator = coordinatorAssembly.createOrderAssembly().coordinator()
+        orderFlowCoordinator?.orderFlowDidClose = { [weak self] in
+            self?.orderFlowCoordinator = nil
+        }
+        orderFlowCoordinator?.start()
     }
 }

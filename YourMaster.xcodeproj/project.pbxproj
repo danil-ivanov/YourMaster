@@ -82,6 +82,14 @@
 		8215B0BC24958E590002BD55 /* PinCodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B0BB24958E580002BD55 /* PinCodeTextField.swift */; };
 		8215B0BE24964C350002BD55 /* VerificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B0BD24964C340002BD55 /* VerificationRequest.swift */; };
 		8215B0C22496C68E0002BD55 /* UINavigationBar+RemoveShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8215B0C12496C68E0002BD55 /* UINavigationBar+RemoveShadow.swift */; };
+		822EF711257AD3CF0038734F /* OrderFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822EF710257AD3CF0038734F /* OrderFlowCoordinator.swift */; };
+		822EF715257AD3F90038734F /* OrderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822EF714257AD3F90038734F /* OrderRouter.swift */; };
+		822EF719257AD4660038734F /* OrderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822EF718257AD4660038734F /* OrderAssembly.swift */; };
+		822EF71D257AD4B30038734F /* OrderAssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822EF71C257AD4B30038734F /* OrderAssemblyProtocol.swift */; };
+		822EF722257AD60B0038734F /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822EF721257AD60B0038734F /* ServicesViewController.swift */; };
+		822EF726257AD64D0038734F /* ServicesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822EF725257AD64D0038734F /* ServicesPresenter.swift */; };
+		822EF72D257AD6DD0038734F /* ServicesPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822EF72C257AD6DD0038734F /* ServicesPresenterInput.swift */; };
+		822EF734257AD7F50038734F /* ServicesViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822EF733257AD7F50038734F /* ServicesViewInput.swift */; };
 		8247B1D625742E3800BA32CA /* TableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B1D225742E3700BA32CA /* TableCellModel.swift */; };
 		8247B1D725742E3800BA32CA /* TableSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B1D325742E3700BA32CA /* TableSectionModel.swift */; };
 		8247B1D825742E3800BA32CA /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247B1D425742E3800BA32CA /* TableCell.swift */; };
@@ -252,6 +260,14 @@
 		8215B0BB24958E580002BD55 /* PinCodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCodeTextField.swift; sourceTree = "<group>"; };
 		8215B0BD24964C340002BD55 /* VerificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationRequest.swift; sourceTree = "<group>"; };
 		8215B0C12496C68E0002BD55 /* UINavigationBar+RemoveShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+RemoveShadow.swift"; sourceTree = "<group>"; };
+		822EF710257AD3CF0038734F /* OrderFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFlowCoordinator.swift; sourceTree = "<group>"; };
+		822EF714257AD3F90038734F /* OrderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRouter.swift; sourceTree = "<group>"; };
+		822EF718257AD4660038734F /* OrderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAssembly.swift; sourceTree = "<group>"; };
+		822EF71C257AD4B30038734F /* OrderAssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAssemblyProtocol.swift; sourceTree = "<group>"; };
+		822EF721257AD60B0038734F /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		822EF725257AD64D0038734F /* ServicesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesPresenter.swift; sourceTree = "<group>"; };
+		822EF72C257AD6DD0038734F /* ServicesPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesPresenterInput.swift; sourceTree = "<group>"; };
+		822EF733257AD7F50038734F /* ServicesViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewInput.swift; sourceTree = "<group>"; };
 		8247B1D225742E3700BA32CA /* TableCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableCellModel.swift; path = "YourMaster/Application Layer/Resources/TableCellModel/TableCellModel.swift"; sourceTree = SOURCE_ROOT; };
 		8247B1D325742E3700BA32CA /* TableSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableSectionModel.swift; path = "YourMaster/Application Layer/Resources/TableCellModel/TableSectionModel.swift"; sourceTree = SOURCE_ROOT; };
 		8247B1D425742E3800BA32CA /* TableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableCell.swift; path = "YourMaster/Application Layer/Resources/TableCellModel/TableCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -662,8 +678,8 @@
 			isa = PBXGroup;
 			children = (
 				965CD30E257BF54000CE96C0 /* Profile */,
+				822EF70F257AD3B00038734F /* Order Feature */,
 				8247B204257539AD00BA32CA /* Menu */,
-				8271F1BC254855840062EB34 /* Shop Info Feature */,
 				825F0E802500EFC900C7F708 /* Shops Feature */,
 				82D234242507B82400699612 /* Login Feature */,
 			);
@@ -781,6 +797,45 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		822EF70F257AD3B00038734F /* Order Feature */ = {
+			isa = PBXGroup;
+			children = (
+				822EF720257AD5FD0038734F /* Services */,
+				822EF710257AD3CF0038734F /* OrderFlowCoordinator.swift */,
+				822EF714257AD3F90038734F /* OrderRouter.swift */,
+				822EF718257AD4660038734F /* OrderAssembly.swift */,
+				822EF71C257AD4B30038734F /* OrderAssemblyProtocol.swift */,
+			);
+			path = "Order Feature";
+			sourceTree = "<group>";
+		};
+		822EF720257AD5FD0038734F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				822EF730257AD7E70038734F /* View */,
+				822EF729257AD6CD0038734F /* Presenter */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		822EF729257AD6CD0038734F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				822EF725257AD64D0038734F /* ServicesPresenter.swift */,
+				822EF72C257AD6DD0038734F /* ServicesPresenterInput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		822EF730257AD7E70038734F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				822EF721257AD60B0038734F /* ServicesViewController.swift */,
+				822EF733257AD7F50038734F /* ServicesViewInput.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8247B1D125742D9300BA32CA /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -861,6 +916,7 @@
 		825F0E802500EFC900C7F708 /* Shops Feature */ = {
 			isa = PBXGroup;
 			children = (
+				8271F1BC254855840062EB34 /* Shop Info */,
 				82BC30352523B5940073A3F3 /* Router */,
 				82D2342F2507BCA500699612 /* Shops Assembly */,
 				825F0E852500F1E700C7F708 /* Shops Interactor */,
@@ -922,7 +978,7 @@
 			path = "Stork View";
 			sourceTree = "<group>";
 		};
-		8271F1BC254855840062EB34 /* Shop Info Feature */ = {
+		8271F1BC254855840062EB34 /* Shop Info */ = {
 			isa = PBXGroup;
 			children = (
 				8271F1BD254857810062EB34 /* ShopInfoViewController.swift */,
@@ -930,7 +986,7 @@
 				820F6B802549C36D00499EDD /* ShopInfoViewInput.swift */,
 				820F6C032551864B00499EDD /* DescriptionViewerViewController.swift */,
 			);
-			path = "Shop Info Feature";
+			path = "Shop Info";
 			sourceTree = "<group>";
 		};
 		82838DF9251A33B900936DDB /* Presenter */ = {
@@ -1379,11 +1435,13 @@
 				82BC30322523B3A90073A3F3 /* StorkViewInput.swift in Sources */,
 				82CEE6D224D08E7F001251A5 /* ShopCell.swift in Sources */,
 				8283BE27253737DA0098A1D6 /* StorkHeaderView.swift in Sources */,
+				822EF726257AD64D0038734F /* ServicesPresenter.swift in Sources */,
 				8271F1B9254818600062EB34 /* AssemblyFactory.swift in Sources */,
 				82D234312507BCCF00699612 /* ShopsAssemblyProtocol.swift in Sources */,
 				829AA39524A7980B004CA3A6 /* ClusterItem.swift in Sources */,
 				82838DFB251A33C700936DDB /* LoginPresenterInput.swift in Sources */,
 				82C7F531252F5D900094E5D1 /* TouchesPassView.swift in Sources */,
+				822EF734257AD7F50038734F /* ServicesViewInput.swift in Sources */,
 				82D02AAC250BC45B00A74906 /* UIViewController+Helper.swift in Sources */,
 				8215AFC2248FFFCA0002BD55 /* AppAssets.swift in Sources */,
 				82838DF8251A335E00936DDB /* LoginPresenter.swift in Sources */,
@@ -1400,6 +1458,8 @@
 				8247B1DD25742EAA00BA32CA /* UITableView+registerCellClass.swift in Sources */,
 				8215B057249003030002BD55 /* AppTheme.swift in Sources */,
 				8247B1D725742E3800BA32CA /* TableSectionModel.swift in Sources */,
+				822EF711257AD3CF0038734F /* OrderFlowCoordinator.swift in Sources */,
+				822EF722257AD60B0038734F /* ServicesViewController.swift in Sources */,
 				8256F22C24A1399E00FB4ACC /* Shop.swift in Sources */,
 				8215B0B5249526D30002BD55 /* BasicRouter.swift in Sources */,
 				82D02AAA250BC31900A74906 /* LoginFlowCoordinator.swift in Sources */,
@@ -1418,6 +1478,7 @@
 				820F6C042551864B00499EDD /* DescriptionViewerViewController.swift in Sources */,
 				8215B0C22496C68E0002BD55 /* UINavigationBar+RemoveShadow.swift in Sources */,
 				82073DDE249EA3E300BDAF9D /* UIViewController+Identifier.swift in Sources */,
+				822EF71D257AD4B30038734F /* OrderAssemblyProtocol.swift in Sources */,
 				82BC302E2523B35B0073A3F3 /* ViewHeaderInput.swift in Sources */,
 				82073DD2249E9EF600BDAF9D /* ShopsMapViewController.swift in Sources */,
 				825F0E832500F02100C7F708 /* ShopsFlowCoordinator.swift in Sources */,
@@ -1461,6 +1522,7 @@
 				8247B1D925742E3800BA32CA /* TableSection.swift in Sources */,
 				820F6BB4254AFCC600499EDD /* StandardTextSectionModel.swift in Sources */,
 				8261F36D24AA57EA006FB3C3 /* ShopsListViewController.swift in Sources */,
+				822EF715257AD3F90038734F /* OrderRouter.swift in Sources */,
 				8215AFC9249001480002BD55 /* AppLocalization.swift in Sources */,
 				8288120C25598E8200383213 /* UILabel+Extension.swift in Sources */,
 				8247B21825753BA700BA32CA /* MenuAssemblyProtocol.swift in Sources */,
@@ -1478,6 +1540,7 @@
 				964D0930257BF70A00DFB282 /* ProfileViewController.swift in Sources */,
 				8256F23924A1512400FB4ACC /* GMSMapView+AddShops.swift in Sources */,
 				82BC300E25239C920073A3F3 /* ShopsListPresenterInput.swift in Sources */,
+				822EF72D257AD6DD0038734F /* ServicesPresenterInput.swift in Sources */,
 				82D02AB1251A2E0500A74906 /* LoginInteractor.swift in Sources */,
 				825F0E872500F20700C7F708 /* ShopsInteractor.swift in Sources */,
 				8255EE68252C9D6E00EB4803 /* BottomListView.swift in Sources */,
@@ -1488,6 +1551,7 @@
 				8215B0BE24964C350002BD55 /* VerificationRequest.swift in Sources */,
 				8247B20C25753A1500BA32CA /* MenuFlowCoordinator.swift in Sources */,
 				820F6BAB254AFA5700499EDD /* DescriptionShopInfoCell.swift in Sources */,
+				822EF719257AD4660038734F /* OrderAssembly.swift in Sources */,
 				8256F23724A14F1000FB4ACC /* StyleWrapper+GMSMapView.swift in Sources */,
 				8215B09C24925FE80002BD55 /* AuthorizationRequest.swift in Sources */,
 				96F1CAA5257BF2660003D6B8 /* MenuCell.swift in Sources */,

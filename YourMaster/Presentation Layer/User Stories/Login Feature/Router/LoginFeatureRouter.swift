@@ -10,7 +10,7 @@ protocol LoginFeatureRouterInput {
 }
 
 final class LoginFeatureRouter: LoginFeatureRouterInput {
-    weak var navigationController: UINavigationController?
+    private weak var navigationController: UINavigationController?
     
     private let assembly: LoginAssemblyProtocol
     

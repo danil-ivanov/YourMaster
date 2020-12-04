@@ -5,8 +5,12 @@ protocol LoginPresenterOutput: AnyObject {
 }
 
 final class LoginPresenter {
-    var output: LoginPresenterOutput?
+    private let output: LoginPresenterOutput
     weak var view: LoginViewInput?
+    
+    init(output: LoginPresenterOutput) {
+        self.output = output
+    }
 }
 
 extension LoginPresenter: LoginPresenterInput {
@@ -23,6 +27,6 @@ extension LoginPresenter: LoginPresenterInput {
 extension LoginPresenter: LoginViewOutput {
     func didRequesLogin(with phone: String) {
         view?.startLoaiding()
-        output?.didRequestLogin(with: phone)
+        output.didRequestLogin(with: phone)
     }
 }

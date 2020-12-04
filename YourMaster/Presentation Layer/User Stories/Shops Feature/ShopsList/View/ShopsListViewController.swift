@@ -78,10 +78,11 @@ final class ShopsListViewController: UIViewController {
                                                  constant: myLocationButtonTopOffset ?? 0)
     }()
     
-    var output: ShopsListViewOutput?
+    private let output: ShopsListViewOutput
     weak var scrollViewDelegate: ShopsScrollViewDelegate?
     
-    init() {
+    init(output: ShopsListViewOutput) {
+        self.output = output
         super.init(nibName: nil, bundle: nil)
         setupActions()
     }
@@ -97,7 +98,7 @@ final class ShopsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        output?.configure()
+        output.configure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,7 +142,7 @@ final class ShopsListViewController: UIViewController {
     @objc
     func myLocationButtonDidTap() {
         ImpactFeedbackGenerator.impactOccured()
-        output?.myLocationButtonDidTap()
+        output.myLocationButtonDidTap()
     }
     
     @objc
@@ -183,14 +184,14 @@ extension ShopsListViewController: ShopsListViewInput {
 
 extension ShopsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return output?.numberOfShops ?? 0
+        return output.numberOfShops ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ShopCell.cellIdentifier) as? ShopCell else {
             return UITableViewCell()
         }
-        output?.configure(cell: cell, at: indexPath.row)
+        output.configure(cell: cell, at: indexPath.row)
         return cell
     }
 }
@@ -213,7 +214,7 @@ extension ShopsListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        output?.didSelectCell(at: indexPath.row)
+        output.didSelectCell(at: indexPath.row)
     }
 }
 
@@ -259,7 +260,7 @@ extension ShopsListViewController: UISearchBarDelegate {
         guard let text = searchBar.text else {
             return
         }
-        output?.search(text)
+        output.search(text)
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {

@@ -13,11 +13,12 @@ protocol ShopsMapPresenterOutput: AnyObject {
 
 final class ShopsMapPresenter {
     weak var view: ShopsMapViewInput?
-    var output: ShopsMapPresenterOutput?
+    private let output: ShopsMapPresenterOutput?
     
     private var clusterManager: ClusterManager
     
-    init() {
+    init(output: ShopsMapPresenterOutput) {
+        self.output = output
         self.clusterManager = ClusterManager()
     }
 }

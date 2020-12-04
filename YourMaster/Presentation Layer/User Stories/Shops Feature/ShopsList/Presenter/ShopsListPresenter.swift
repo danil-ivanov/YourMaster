@@ -10,7 +10,7 @@ protocol ShopsListPresenterOutput: AnyObject {
 }
 
 final class ShopsListPresenter {
-    var output: ShopsListPresenterOutput?
+    private let output: ShopsListPresenterOutput
     weak var view: ShopsListViewInput?
     private var shopsCellModels: [ShopCellModel]
     private var shops: [Shop]
@@ -22,7 +22,8 @@ final class ShopsListPresenter {
         }
     }
     
-    init() {
+    init(output: ShopsListPresenterOutput) {
+        self.output = output
         self.shops = []
         self.shopsCellModels = []
         self.filteredShops = []
@@ -62,20 +63,20 @@ extension ShopsListPresenter: ShopsListViewOutput {
     
     func search(_ text: String) {
         if text.isEmpty {
-            output?.searchDidEnd()
+            output.searchDidEnd()
             filteredShops = shops
             return
         }
-        output?.didSearch(text: text)
+        output.didSearch(text: text)
         filteredShops = shops.filter{ $0.name.lowercased().hasPrefix(text.lowercased()) }
     }
     
     func myLocationButtonDidTap() {
-        output?.didRequestPresentMyLocation()
+        output.didRequestPresentMyLocation()
     }
     
     func didSelectCell(at row: Int) {
         let shop = shops[row]
-        output?.didSelect(shop: shop)
+        output.didSelect(shop: shop)
     }
 }

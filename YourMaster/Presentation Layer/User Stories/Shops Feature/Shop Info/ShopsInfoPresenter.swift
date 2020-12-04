@@ -6,10 +6,11 @@ protocol ShopInfoPresenterOutput: AnyObject {
     func showDescriptionViewer(description: String)
     func showPhotosViewer()
     func showReviewsView()
+    func showServices()
 }
 
 final class ShopInfoPresenter {
-    var output: ShopInfoPresenterOutput?
+    private let output: ShopInfoPresenterOutput
     weak var view: ShopInfoViewInput?
     
     private let shop: Shop
@@ -20,7 +21,8 @@ final class ShopInfoPresenter {
         }
     }
     
-    init(shop: Shop) {
+    init(shop: Shop, output: ShopInfoPresenterOutput) {
+        self.output = output
         self.shop = shop
         self.sectionModels = []
         prepareModels()
@@ -29,7 +31,11 @@ final class ShopInfoPresenter {
     private func prepareModels() {
         let baseModel = StandardTextSectionModel(title: "", height: 0.0)
         baseModel.cellModels.append(BaseShopInfoCellModel(imagePath: "", shopName: shop.name, address: shop.location.address))
-        baseModel.cellModels.append(ServicesCellModel())
+        let servicesCellModel = ServicesCellModel()
+        servicesCellModel.action = { [weak self] in
+            self?.output.showServices()
+        }
+        baseModel.cellModels.append(servicesCellModel)
         
         let descriptionModel = StandardTextSectionModel(title: "Описание", height: 50.0)
         let descriptionCellModel = DescriptionShopInfoCellModel(description: "On third line our text need be collapsed because we have ordinary text, sed diam nonumy eirmod tempor invidunt ")
@@ -42,13 +48,13 @@ final class ShopInfoPresenter {
         let photoModel = StandardTextSectionModel(title: "Фото", height: 50.0, moreButtonNeeded: true)
         photoModel.cellModels.append(PhotoShopInfoCellModel())
         photoModel.action = { [weak self] in
-            self?.output?.showPhotosViewer()
+            self?.output.showPhotosViewer()
         }
         
         let reviewsModel = StandardTextSectionModel(title: "Отзывы", height: 50.0, moreButtonNeeded: true)
         reviewsModel.cellModels.append(ReviewsCellModel(reviews: []))
         reviewsModel.action = { [weak self] in
-            self?.output?.showReviewsView()
+            self?.output.showReviewsView()
         }
         
         sectionModels = [baseModel, descriptionModel, contactsModel, photoModel, reviewsModel]
@@ -88,7 +94,7 @@ extension ShopInfoPresenter: ShopInfoViewOutput {
         let model = sectionModels[section]
         let cellModel = model.cellModels[row]
         if cellModel is DescriptionShopInfoCellModel {
-            output?.showDescriptionViewer(description: (cellModel as? DescriptionShopInfoCellModel)?.description ?? "")
+            output.showDescriptionViewer(description: (cellModel as? DescriptionShopInfoCellModel)?.description ?? "")
         }
     }
 }

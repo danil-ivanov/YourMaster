@@ -9,21 +9,21 @@ protocol ShopsServicesProtocol {
 
 final class ShopsAssembly {
     private let serviceAssembly: ShopsServicesProtocol
-    private let coordinatorAssembly: MenuAssemblyFactoryProtocol
+    private let coordinatorAssembly: MenuAssemblyFactoryProtocol & OrderAssemblyFactoryProtocol
     private lazy var shopsService: ShopsServiceProtocol = serviceAssembly.shopsService()
     private lazy var locationManager: CLLocationManager = serviceAssembly.locationManager()
     
     private lazy var flowCoordinator: ShopsFlowCoordinator = {
-        let flowCoordinator = ShopsFlowCoordinator(coordinatorAssembly: coordinatorAssembly)
         let interactor = ShopsInteractor(shopService: shopsService, locationManager: locationManager)
         let router = ShopsRouter(assembly: self)
-        flowCoordinator.router = router
-        flowCoordinator.interactor = interactor
+        let flowCoordinator = ShopsFlowCoordinator(coordinatorAssembly: coordinatorAssembly,
+                                                   router: router,
+                                                   interactor: interactor)
         interactor.output = flowCoordinator
         return flowCoordinator
     }()
     
-    init(coordinatorAssembly: MenuAssemblyFactoryProtocol, serviceAssembly: ShopsServicesProtocol) {
+    init(coordinatorAssembly: MenuAssemblyFactoryProtocol & OrderAssemblyFactoryProtocol, serviceAssembly: ShopsServicesProtocol) {
         self.coordinatorAssembly = coordinatorAssembly
         self.serviceAssembly = serviceAssembly
     }
@@ -41,32 +41,26 @@ extension ShopsAssembly: ShopsFlowCoordinatorAssemblyProtocol {
 
 extension ShopsAssembly: ShopsAssemblyProtocol {
     func shopsMapViewController() -> ShopsMapViewController {
-        let presenter = ShopsMapPresenter()
-        let controller = ShopsMapViewController()
-        controller.output = presenter
-        presenter.output = flowCoordinator
+        let presenter = ShopsMapPresenter(output: flowCoordinator)
+        let controller = ShopsMapViewController(output: presenter)
         presenter.view = controller
         flowCoordinator.mapPresenter = presenter
         return controller
     }
     
     func shopsListViewController() -> ShopsListViewController {
-        let presenter = ShopsListPresenter()
-        let controller = ShopsListViewController()
-        controller.output = presenter
+        let presenter = ShopsListPresenter(output: flowCoordinator)
+        let controller = ShopsListViewController(output: presenter)
         presenter.view = controller
-        presenter.output = flowCoordinator
         flowCoordinator.listPresenter = presenter
         return controller
     }
     
     func shopInfoViewController(with shop: Shop) -> ShopInfoViewController {
-        let presenter = ShopInfoPresenter(shop: shop)
-        let controller = ShopInfoViewController()
-        controller.output = presenter
+        let presenter = ShopInfoPresenter(shop: shop, output: flowCoordinator)
+        let controller = ShopInfoViewController(output: presenter)
         presenter.view = controller
         flowCoordinator.infoPresenter = presenter
-        presenter.output = flowCoordinator
         return controller
     }
 }
