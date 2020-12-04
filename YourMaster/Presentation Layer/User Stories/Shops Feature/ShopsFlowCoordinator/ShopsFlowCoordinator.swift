@@ -86,4 +86,12 @@ extension ShopsFlowCoordinator: ShopInfoPresenterOutput {
     func showDescriptionViewer(description: String) {
         router?.showDescriptionViewer(description: description)
     }
+    
+    func showPhotosViewer() {
+        
+    }
+    
+    func showReviewsView() {
+        
+    }
 }

@@ -8,6 +8,8 @@ protocol ShopsRouterInput {
     func showFloatingPanel()
     func showInfo(shop: Shop)
     func showDescriptionViewer(description: String)
+    func showPhotosViewer()
+    func showReviewsView()
 }
 
 final class ShopsRouter: ShopsRouterInput {
@@ -40,5 +42,13 @@ final class ShopsRouter: ShopsRouterInput {
     func showDescriptionViewer(description: String) {
         let viewController = DescriptionViewerViewController(description: description)
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func showPhotosViewer() {
+        
+    }
+    
+    func showReviewsView() {
+        
     }
 }

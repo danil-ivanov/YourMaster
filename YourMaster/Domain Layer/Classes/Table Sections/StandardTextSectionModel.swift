@@ -14,9 +14,13 @@ final class StandardTextSectionModel: TableSectionModel {
     
     let title: String
     let height: CGFloat
+    let moreButtonNeeded: Bool
+    
+    var action: (() -> ())?
 
-    init(title: String, height: CGFloat) {
+    init(title: String, height: CGFloat, moreButtonNeeded: Bool = false) {
         self.title = title
         self.height = height
+        self.moreButtonNeeded = moreButtonNeeded
     }
 }

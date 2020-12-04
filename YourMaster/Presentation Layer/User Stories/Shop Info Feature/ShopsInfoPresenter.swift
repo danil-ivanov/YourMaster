@@ -4,6 +4,8 @@ import UIKit
 
 protocol ShopInfoPresenterOutput: AnyObject {
     func showDescriptionViewer(description: String)
+    func showPhotosViewer()
+    func showReviewsView()
 }
 
 final class ShopInfoPresenter {
@@ -37,11 +39,17 @@ final class ShopInfoPresenter {
         contactsModel.cellModels.append(ContactCellModel(contact: "+79697298209"))
         contactsModel.cellModels.append(ContactCellModel(contact: "www.instagram.com/sequoiaspb/"))
         
-        let photoModel = StandardTextSectionModel(title: "Фото", height: 50.0)
+        let photoModel = StandardTextSectionModel(title: "Фото", height: 50.0, moreButtonNeeded: true)
         photoModel.cellModels.append(PhotoShopInfoCellModel())
+        photoModel.action = { [weak self] in
+            self?.output?.showPhotosViewer()
+        }
         
-        let reviewsModel = StandardTextSectionModel(title: "Отзывы", height: 50.0)
+        let reviewsModel = StandardTextSectionModel(title: "Отзывы", height: 50.0, moreButtonNeeded: true)
         reviewsModel.cellModels.append(ReviewsCellModel(reviews: []))
+        reviewsModel.action = { [weak self] in
+            self?.output?.showReviewsView()
+        }
         
         sectionModels = [baseModel, descriptionModel, contactsModel, photoModel, reviewsModel]
     }
