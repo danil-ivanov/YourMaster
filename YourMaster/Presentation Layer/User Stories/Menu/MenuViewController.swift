@@ -120,8 +120,8 @@ extension MenuViewController: UITableViewDataSource {
 extension MenuViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		if indexPath.item == 0 {
-//			let newViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
-//			self.present(newViewController, animated: true, completion: nil)
+			let newViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+			self.present(newViewController, animated: true, completion: nil)
 			
 		} else if indexPath.item == 1 {
 			sendMail()

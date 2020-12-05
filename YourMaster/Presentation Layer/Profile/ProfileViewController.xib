@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="YourMaster" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarImage" destination="ZXj-Va-WAb" id="UZO-Vo-Xaz"/>
+                <outlet property="emailButton" destination="37E-U8-Cxw" id="yd1-2X-diD"/>
+                <outlet property="nameButton" destination="Hso-gD-FNl" id="4Ji-GW-Bl6"/>
+                <outlet property="numberButton" destination="dhs-Fh-mUf" id="Yro-Cf-p2W"/>
+                <outlet property="view" destination="Z4a-v1-S5y" id="p9N-4e-Mb5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Z4a-v1-S5y">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarMock" translatesAutoresizingMaskIntoConstraints="NO" id="ZXj-Va-WAb">
+                    <rect key="frame" x="40" y="84" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="2Wu-xD-dLO"/>
+                        <constraint firstAttribute="width" constant="100" id="PkL-Eb-IZl"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhs-Fh-mUf">
+                    <rect key="frame" x="182" y="110" width="222" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="q24-kH-6F1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="Ваш номер">
+                        <color key="titleColor" red="0.62242579460000003" green="0.0" blue="0.50198608639999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
+                    <connections>
+                        <action selector="inputNumberAction:" destination="-1" eventType="touchUpInside" id="S9g-FU-38i"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6QW-hv-1iO">
+                    <rect key="frame" x="40" y="230" width="204" height="106"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hso-gD-FNl">
+                            <rect key="frame" x="0.0" y="0.0" width="134" height="30"/>
+                            <state key="normal" title="Введите Ваше имя"/>
+                            <connections>
+                                <action selector="inputNameAction:" destination="-1" eventType="touchUpInside" id="NCK-Rg-QKg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37E-U8-Cxw">
+                            <rect key="frame" x="0.0" y="38" width="204" height="30"/>
+                            <state key="normal" title="Введите электронную почту"/>
+                            <connections>
+                                <action selector="inputEmailAction:" destination="-1" eventType="touchUpInside" id="JF0-F3-GKg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6I-8S-cAx">
+                            <rect key="frame" x="0.0" y="76" width="135" height="30"/>
+                            <state key="normal" title="Выйти из аккаунта">
+                                <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="logoutAction:" destination="-1" eventType="touchUpInside" id="0uD-By-i2t"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="hqs-Zb-Ege"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="6QW-hv-1iO" firstAttribute="leading" secondItem="ZXj-Va-WAb" secondAttribute="leading" id="379-1l-1c1"/>
+                <constraint firstItem="hqs-Zb-Ege" firstAttribute="trailing" secondItem="dhs-Fh-mUf" secondAttribute="trailing" constant="10" id="IR7-a2-5jO"/>
+                <constraint firstItem="6QW-hv-1iO" firstAttribute="top" secondItem="ZXj-Va-WAb" secondAttribute="bottom" constant="46" id="InV-ji-Bbk"/>
+                <constraint firstItem="ZXj-Va-WAb" firstAttribute="top" secondItem="hqs-Zb-Ege" secondAttribute="top" constant="40" id="Qaj-Wa-wpV"/>
+                <constraint firstItem="dhs-Fh-mUf" firstAttribute="centerY" secondItem="ZXj-Va-WAb" secondAttribute="centerY" id="cBY-ka-QRl"/>
+                <constraint firstItem="ZXj-Va-WAb" firstAttribute="leading" secondItem="hqs-Zb-Ege" secondAttribute="leading" constant="40" id="uaY-eQ-hcT"/>
+                <constraint firstItem="dhs-Fh-mUf" firstAttribute="leading" secondItem="ZXj-Va-WAb" secondAttribute="trailing" constant="42" id="wWY-2G-WLo"/>
+            </constraints>
+            <point key="canvasLocation" x="-68.115942028985515" y="70.982142857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="avatarMock" width="800" height="800"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
