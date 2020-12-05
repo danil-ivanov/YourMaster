@@ -161,6 +161,8 @@
 		83617D8F2574363E0026D91B /* AppShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83617D8E2574363E0026D91B /* AppShared.swift */; };
 		83617D912574366F0026D91B /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83617D902574366F0026D91B /* Storage.swift */; };
 		83617D94257436A40026D91B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83617D93257436A40026D91B /* User.swift */; };
+		964D0930257BF70A00DFB282 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964D092F257BF70A00DFB282 /* ProfileViewController.swift */; };
+		964D093A257BF76B00DFB282 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 964D0939257BF76B00DFB282 /* ProfileViewController.xib */; };
 		96F1CAA5257BF2660003D6B8 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F1CAA3257BF2660003D6B8 /* MenuCell.swift */; };
 		96F1CAA6257BF2660003D6B8 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96F1CAA4257BF2660003D6B8 /* MenuCell.xib */; };
 /* End PBXBuildFile section */
@@ -333,6 +335,8 @@
 		83617D8E2574363E0026D91B /* AppShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShared.swift; sourceTree = "<group>"; };
 		83617D902574366F0026D91B /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		83617D93257436A40026D91B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		964D092F257BF70A00DFB282 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		964D0939257BF76B00DFB282 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		96F1CAA3257BF2660003D6B8 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuCell.swift; path = "../../../../../YourMaster old/YourMaster/Presentation Layer/User Stories/Menu/MenuCell.swift"; sourceTree = "<group>"; };
 		96F1CAA4257BF2660003D6B8 /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MenuCell.xib; path = "../../../../../YourMaster old/YourMaster/Presentation Layer/User Stories/Menu/MenuCell.xib"; sourceTree = "<group>"; };
 		9BD9D53E8BF4ED794FC9EA4A /* Pods_YourMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -657,6 +661,7 @@
 		8215B061249005740002BD55 /* User Stories */ = {
 			isa = PBXGroup;
 			children = (
+				965CD30E257BF54000CE96C0 /* Profile */,
 				8247B204257539AD00BA32CA /* Menu */,
 				8271F1BC254855840062EB34 /* Shop Info Feature */,
 				825F0E802500EFC900C7F708 /* Shops Feature */,
@@ -1167,6 +1172,16 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		965CD30E257BF54000CE96C0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				964D0939257BF76B00DFB282 /* ProfileViewController.xib */,
+				964D092F257BF70A00DFB282 /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			path = ../Profile;
+			sourceTree = "<group>";
+		};
 		F2A42041779F7F5941FCACEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1263,6 +1278,7 @@
 				82E7BADD248BD3F700106432 /* LaunchScreen.storyboard in Resources */,
 				96F1CAA6257BF2660003D6B8 /* MenuCell.xib in Resources */,
 				8215AFCB2490016B0002BD55 /* Localizable.strings in Resources */,
+				964D093A257BF76B00DFB282 /* ProfileViewController.xib in Resources */,
 				8215B08A249178860002BD55 /* sf-ui-display-ultralight-58646b19bf205.otf in Resources */,
 				8215B08E249178860002BD55 /* sf-ui-display-light-58646b33e0551.otf in Resources */,
 				8215B08D249178860002BD55 /* sf-ui-display-heavy-586470160b9e5.otf in Resources */,
@@ -1459,6 +1475,7 @@
 				8256F23324A13E1500FB4ACC /* ShopRequest.swift in Sources */,
 				8215B08B249178860002BD55 /* SFUIDisplay.swift in Sources */,
 				8215B05D249003AA0002BD55 /* StyleWrapper.swift in Sources */,
+				964D0930257BF70A00DFB282 /* ProfileViewController.swift in Sources */,
 				8256F23924A1512400FB4ACC /* GMSMapView+AddShops.swift in Sources */,
 				82BC300E25239C920073A3F3 /* ShopsListPresenterInput.swift in Sources */,
 				82D02AB1251A2E0500A74906 /* LoginInteractor.swift in Sources */,
