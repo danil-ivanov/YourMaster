@@ -17,8 +17,8 @@ class ProfileViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.avatarImage.layer.cornerRadius = self.avatarImage.frame.height / 2
-		let name = UserDefaults.standard.string(forKey: "name") ?? ""
-		let email = UserDefaults.standard.string(forKey: "email") ?? ""
+		let name = UserDefaults.standard.string(forKey: "name") ?? "Ваше имя"
+		let email = UserDefaults.standard.string(forKey: "email") ?? "Ваша почта"
 		numberButton.setTitle(AppShared.storage.user?.phone, for: .normal)
 		nameButton.setTitle(name, for: .normal)
 		emailButton.setTitle(email, for: .normal)
