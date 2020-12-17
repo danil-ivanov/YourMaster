@@ -7,6 +7,7 @@ final class ShopsFlowCoordinator {
     weak var mapPresenter: ShopsMapPresenterInput?
     weak var listPresenter: ShopsListPresenter?
     weak var infoPresenter: ShopInfoPresenter?
+    weak var servicesPresenter: ServicesPresenterInput?
     private let router: ShopsRouterInput
     private let interactor: ShopsInteractorInput
     
@@ -33,7 +34,7 @@ extension ShopsFlowCoordinator: ShopsMapPresenterOutput {
     }
     
     func didRequestShops() {
-        interactor.getShops(radius: 10000)
+        interactor.getShops(radius: 100000)
     }
     
     func didRequestLocation() {
@@ -50,6 +51,10 @@ extension ShopsFlowCoordinator: ShopsInteractorOutput {
     func didReceiveShops(shops: [Shop]) {
         mapPresenter?.presentShops(shops: shops)
         listPresenter?.presentShops(shops: shops)
+    }
+    
+    func didReceiveServices(servicesDict: [String: [Service]]) {
+        servicesPresenter?.updateServices(servicesDict: servicesDict)
     }
     
     func didReceiveErrorMessage(message: String) {
@@ -101,11 +106,18 @@ extension ShopsFlowCoordinator: ShopInfoPresenterOutput {
         
     }
     
-    func showServices() {
-        orderFlowCoordinator = coordinatorAssembly.createOrderAssembly().coordinator()
-        orderFlowCoordinator?.orderFlowDidClose = { [weak self] in
-            self?.orderFlowCoordinator = nil
-        }
-        orderFlowCoordinator?.start()
+    func showServices(of shop: Shop) {
+        router.showServices(of: shop)
+    }
+}
+
+extension ShopsFlowCoordinator: ServicesPresenterOutput {
+
+    func didRequestServices(shop: Shop) {
+        interactor.getServices(for: shop)
+    }
+
+    func servicesDidClose() {
+        interactor.cancelServicesRequest()
     }
 }

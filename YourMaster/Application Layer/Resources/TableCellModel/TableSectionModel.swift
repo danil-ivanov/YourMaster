@@ -1,9 +1,12 @@
 
 import UIKit
 
-protocol TableSectionIdentifiable {
+protocol SectionIdentifiable {
     var headerIdentifier: String { get }
     var headerHeight: CGFloat { get }
+}
+
+protocol TableSectionIdentifiable: SectionIdentifiable {
     var cellModels: [TableCellIdentifiable] { get set }
 }
 

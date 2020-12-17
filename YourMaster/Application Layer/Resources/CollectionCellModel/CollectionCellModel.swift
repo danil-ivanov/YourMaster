@@ -1,8 +1,8 @@
 
 import UIKit
 
-public protocol CollectionCellIdentifiable: TableCellIdentifiable {
-    var cellWidth: CGFloat { get }
+public protocol CollectionCellIdentifiable: CellIdentifiable {
+    var cellSize: CGSize { get }
 }
 
 open class CollectionCellModel: CollectionCellIdentifiable {
@@ -12,12 +12,8 @@ open class CollectionCellModel: CollectionCellIdentifiable {
         return ""
     }
     
-    public var cellHeight: CGFloat {
-        return 0
-    }
-    
-    public var cellWidth: CGFloat {
-        return 0
+    public var cellSize: CGSize {
+        return .zero
     }
     
     public var userInfo: [String: Any] = [:]

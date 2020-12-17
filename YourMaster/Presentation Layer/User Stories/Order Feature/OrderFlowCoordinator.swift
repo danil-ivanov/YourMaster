@@ -26,5 +26,3 @@ final class OrderFlowCoordinator: CoordinatorInput, OrderFlowCoordinatorOutput {
         router.showServices()
     }
 }
-
-extension OrderFlowCoordinator: ServicesPresenterOutput {}

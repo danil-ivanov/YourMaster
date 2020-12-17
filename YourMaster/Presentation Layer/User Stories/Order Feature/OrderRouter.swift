@@ -22,7 +22,6 @@ final class OrderRouter: OrderRouterInput {
     }
     
     func showServices() {
-        let controller = assembly.servicesController()
-        navigationController?.pushViewController(controller, animated: true)
+        
     }
 }

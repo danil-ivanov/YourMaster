@@ -38,6 +38,11 @@ final class ShopInfoViewController: UIViewController {
         output.configure()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.delegate = self
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -76,7 +81,6 @@ final class ShopInfoViewController: UIViewController {
         appearance.backgroundColor = .white
         appearance.shadowColor = .clear
         navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.delegate = self
     }
 }
 

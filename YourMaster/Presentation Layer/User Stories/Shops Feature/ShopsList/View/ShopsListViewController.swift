@@ -184,7 +184,7 @@ extension ShopsListViewController: ShopsListViewInput {
 
 extension ShopsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return output.numberOfShops ?? 0
+        return output.numberOfShops
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

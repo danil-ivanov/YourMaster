@@ -7,5 +7,8 @@
 //
 
 protocol ServicesViewInput: AnyObject {
-    
+    func prepareInterface()
+    func presentServices()
+    func startLoading()
+    func finishLoading()
 }

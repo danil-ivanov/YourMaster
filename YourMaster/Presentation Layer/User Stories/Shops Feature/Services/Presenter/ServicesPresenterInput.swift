@@ -7,5 +7,5 @@
 //
 
 protocol ServicesPresenterInput: AnyObject {
-    
+    func updateServices(servicesDict: [String: [Service]])
 }

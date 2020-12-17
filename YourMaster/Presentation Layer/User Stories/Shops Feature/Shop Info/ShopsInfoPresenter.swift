@@ -6,7 +6,7 @@ protocol ShopInfoPresenterOutput: AnyObject {
     func showDescriptionViewer(description: String)
     func showPhotosViewer()
     func showReviewsView()
-    func showServices()
+    func showServices(of shop: Shop)
 }
 
 final class ShopInfoPresenter {
@@ -33,7 +33,10 @@ final class ShopInfoPresenter {
         baseModel.cellModels.append(BaseShopInfoCellModel(imagePath: "", shopName: shop.name, address: shop.location.address))
         let servicesCellModel = ServicesCellModel()
         servicesCellModel.action = { [weak self] in
-            self?.output.showServices()
+            guard let self = self else {
+                return
+            }
+            self.output.showServices(of: self.shop)
         }
         baseModel.cellModels.append(servicesCellModel)
         

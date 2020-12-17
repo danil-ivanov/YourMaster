@@ -63,4 +63,12 @@ extension ShopsAssembly: ShopsAssemblyProtocol {
         flowCoordinator.infoPresenter = presenter
         return controller
     }
+    
+    func shopServicesController(with shop: Shop) -> ServicesViewController {
+        let presenter = ServicesPresenter(output: flowCoordinator, shop: shop)
+        let controller = ServicesViewController(output: presenter)
+        presenter.view = controller
+        flowCoordinator.servicesPresenter = presenter
+        return controller
+    }
 }

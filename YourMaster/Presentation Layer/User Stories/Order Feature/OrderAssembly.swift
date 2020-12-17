@@ -23,11 +23,5 @@ extension OrderAssembly: OrderFlowCoordinatorAssemblyProtocol {
 }
 
 extension OrderAssembly: OrderAssemblyProtocol {
-    func servicesController() -> ServicesViewController {
-        let presenter = ServicesPresenter(output: flowCoordinator)
-        let controller = ServicesViewController(output: presenter)
-        presenter.view = controller
-        flowCoordinator.servicesPresenter = presenter
-        return controller
-    }
+    
 }

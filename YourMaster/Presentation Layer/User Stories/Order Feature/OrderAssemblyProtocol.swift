@@ -9,7 +9,7 @@
 import UIKit
 
 protocol OrderAssemblyProtocol {
-    func servicesController() -> ServicesViewController
+    
 }
 
 protocol OrderFlowCoordinatorAssemblyProtocol {
