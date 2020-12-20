@@ -44,14 +44,6 @@ final class ShopInfoPresenter {
     private func prepareModels() {
         let baseModel = StandardTextSectionModel(title: "", height: 0.0)
         baseModel.cellModels.append(BaseShopInfoCellModel(imagePath: "", shopName: shop.name, address: shop.location.address))
-        let servicesCellModel = ServicesCellModel()
-        servicesCellModel.action = { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.output.showServices(of: self.shop)
-        }
-        baseModel.cellModels.append(servicesCellModel)
         
         let descriptionModel = StandardTextSectionModel(title: "Описание", height: 50.0)
         let descriptionCellModel = DescriptionShopInfoCellModel(description: "On third line our text need be collapsed because we have ordinary text, sed diam nonumy eirmod tempor invidunt ")
@@ -67,13 +59,14 @@ final class ShopInfoPresenter {
             self?.output.showPhotosViewer()
         }
         
-        let reviewsModel = StandardTextSectionModel(title: "Отзывы", height: 50.0, moreButtonNeeded: true)
-        reviewsModel.cellModels.append(ReviewsCellModel(reviews: []))
-        reviewsModel.action = { [weak self] in
-            self?.output.showReviewsView()
-        }
-        
-        sectionModels = [baseModel, descriptionModel, contactsModel, photoModel, reviewsModel]
+        let reviewsModel = StandardTextSectionModel(title: "", height: 0)
+        reviewsModel.cellModels.append(ReviewsAndDistanceCellModel(rating: 4.7, distance: 5.3, reviewsCount: 43))
+        reviewsModel.cellModels.append(ServicesCellModel())
+//        reviewsModel.action = { [weak self] in
+//            self?.output?.showReviewsView()
+//        }
+    
+        sectionModels = [baseModel, reviewsModel, descriptionModel, contactsModel, photoModel]
     }
 }
 

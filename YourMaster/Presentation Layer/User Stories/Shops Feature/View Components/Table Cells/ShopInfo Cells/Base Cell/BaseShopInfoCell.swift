@@ -8,10 +8,10 @@ final class BaseShopInfoCell: TableCell {
         enum ImageView {
             static let leftOffset: CGFloat = 16.0
             static let rightOffset: CGFloat = 20.0
-            static let width: CGFloat = 120.0
-            static let heihgt: CGFloat = 120.0
-            static let topOffset: CGFloat = 10.0
-            static let bottomOffset: CGFloat = 5.0
+            static let width: CGFloat = 90.0
+            static let heihgt: CGFloat = 90.0
+            static let topOffset: CGFloat = 0.0
+            static let bottomOffset: CGFloat = 25.0
         }
         enum ShopNameLabel {
             static let topOffset: CGFloat = 5.0
@@ -41,6 +41,7 @@ final class BaseShopInfoCell: TableCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .purple
         imageView.layer.cornerRadius = 10
+        imageView.image = AppAssets.avatarMock
         return imageView
     }()
     
@@ -89,7 +90,7 @@ final class BaseShopInfoCell: TableCell {
         addSubview(shopNameLabel)
         addSubview(addressLabel)
         addSubview(ratingView)
-        addSubview(ratingLabel)
+        //addSubview(ratingLabel)
         
         NSLayoutConstraint.activate([
             shopImageView.topAnchor.constraint(equalTo: topAnchor, constant: Dimensions.ImageView.topOffset),
@@ -104,16 +105,7 @@ final class BaseShopInfoCell: TableCell {
         
             addressLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -Dimensions.AddressLabel.rightOffset),
             addressLabel.leadingAnchor.constraint(equalTo: shopNameLabel.leadingAnchor),
-            addressLabel.topAnchor.constraint(equalTo: shopNameLabel.bottomAnchor, constant: Dimensions.ShopNameLabel.topOffset),
-        
-            ratingView.leadingAnchor.constraint(equalTo: shopNameLabel.leadingAnchor),
-            ratingView.heightAnchor.constraint(equalToConstant: Dimensions.RatingImageView.height),
-            ratingView.widthAnchor.constraint(equalToConstant: Dimensions.RatingImageView.width),
-            ratingView.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 5),
-            ratingView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -5),
-            
-            ratingLabel.leadingAnchor.constraint(equalTo: ratingView.trailingAnchor, constant: Dimensions.RatingLabel.leftOffset),
-            ratingLabel.centerYAnchor.constraint(equalTo: ratingView.centerYAnchor)
+            addressLabel.topAnchor.constraint(equalTo: shopNameLabel.bottomAnchor, constant: Dimensions.ShopNameLabel.topOffset)
         ])
     }
     
@@ -125,5 +117,10 @@ final class BaseShopInfoCell: TableCell {
         addressLabel.text = model.address
         ratingLabel.text = "4.0"
         ratingView.rating = 4.0
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        //shopImageView.apply(.roundedStyle())
     }
 }

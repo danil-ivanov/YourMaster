@@ -10,8 +10,8 @@ final class ServicesCell: TableCell {
     private let button: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .orange
-        button.layer.cornerRadius = 6
+        button.backgroundColor = AppColors.accentColor
+        button.layer.cornerRadius = 16
         button.setTitle("Услуги и цены", for: .normal)
         button.titleLabel?.font = SFUIDisplay.medium.font(size: 17)
         button.layer.shadowRadius = 4.0
@@ -23,11 +23,11 @@ final class ServicesCell: TableCell {
     override func setupView() {
         contentView.addSubview(button)
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            button.heightAnchor.constraint(equalToConstant: 45)])
+            button.topAnchor.constraint(equalTo: topAnchor, constant: 30),
+            button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            button.heightAnchor.constraint(equalToConstant: 55)])
         
         setupAction()
     }

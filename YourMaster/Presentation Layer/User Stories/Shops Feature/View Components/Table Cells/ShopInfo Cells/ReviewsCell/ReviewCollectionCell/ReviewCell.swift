@@ -2,7 +2,7 @@
 
 import UIKit
 
-final class ReviewCollectionCell: CollectionCell {
+final class ReviewCell: TableCell {
     
     override class var cellIdentifier: String {
         return String.className(self)
@@ -29,7 +29,7 @@ final class ReviewCollectionCell: CollectionCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Все понравилось"
         label.font = SFUIDisplay.regular.font(size: 16)
-        label.numberOfLines = 3
+        label.numberOfLines = 0
         return label
     }()
     
@@ -54,8 +54,7 @@ final class ReviewCollectionCell: CollectionCell {
     }()
     
     override func setupView() {
-        layer.cornerRadius = 10
-        backgroundColor = .systemGray6
+        layer.cornerRadius = 1
         addSubview(dateLabel)
         addSubview(userLabel)
         addSubview(ratingView)
@@ -85,7 +84,7 @@ final class ReviewCollectionCell: CollectionCell {
     }
     
     override func updateViews() {
-        guard let model = self.model as? ReviewCollectionCellModel else {
+        guard let model = self.model as? ReviewCellModel else {
             return
         }
         reviewLabel.text = model.review

@@ -1,8 +1,8 @@
 
 
-final class ReviewCollectionCellModel: CollectionCellModel {
+final class ReviewCellModel: TableCellModel {
     override var cellIdentifier: String {
-        return ReviewCollectionCell.cellIdentifier
+        return ReviewCell.cellIdentifier
     }
     
     let review: String
