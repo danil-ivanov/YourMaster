@@ -2,7 +2,7 @@
 import UIKit
 
 public protocol TableCellRepresentable {
-    var model: TableCellIdentifiable? { get set }
+    var model: CellIdentifiable? { get set }
 }
 
 open class TableCell: UITableViewCell, TableCellRepresentable {
@@ -13,7 +13,7 @@ open class TableCell: UITableViewCell, TableCellRepresentable {
     }
     
     // MARK: - Props
-    public var model: TableCellIdentifiable? {
+    public var model: CellIdentifiable? {
         didSet {
             updateViews()
         }

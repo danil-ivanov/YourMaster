@@ -25,3 +25,9 @@ extension AssemblyFactory: ShopsAssemblyFactoryProtocol {
         return ShopsAssembly(coordinatorAssembly: self, serviceAssembly: serviceAssembly)
     }
 }
+
+extension AssemblyFactory: OrderAssemblyFactoryProtocol {
+    func createOrderAssembly() -> OrderFlowCoordinatorAssemblyProtocol {
+        return OrderAssembly()
+    }
+}

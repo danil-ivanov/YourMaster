@@ -4,6 +4,7 @@ import GoogleMapsUtils
 
 protocol ShopsInteractorOutput: AnyObject {
     func didReceiveShops(shops: [Shop])
+    func didReceiveServices(servicesDict: [String: [Service]])
     func didReceiveErrorMessage(message: String)
     func didUpdateLocation(location: CLLocation)
 }
@@ -16,6 +17,8 @@ final class ShopsInteractor: NSObject {
     
     private var isFirstUpdateLocation: Bool
     
+    private var defferredGetShops: (() -> ())?
+    
     init(shopService: ShopsServiceProtocol, locationManager: CLLocationManager) {
         self.shopService = shopService
         self.locationManager = locationManager
@@ -27,6 +30,12 @@ final class ShopsInteractor: NSObject {
 
 extension ShopsInteractor: ShopsInteractorInput {
     func getShops(radius: Double) {
+        if isFirstUpdateLocation {
+            defferredGetShops = { [weak self, radius] in
+                self?.getShops(radius: radius)
+            }
+            return
+        }
         guard let coordinate = locationManager.location?.coordinate else {
             return
         }
@@ -53,6 +62,21 @@ extension ShopsInteractor: ShopsInteractorInput {
     func getCurrentLocation() -> CLLocation? {
         return locationManager.location
     }
+    
+    func getServices(for shop: Shop) {
+        shopService.getServices(shopId: shop.id) { [weak self] result in
+            switch result {
+            case .success(let servicesDict):
+                self?.output?.didReceiveServices(servicesDict: servicesDict)
+            case .failure(let error):
+                self?.output?.didReceiveErrorMessage(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func cancelServicesRequest() {
+        shopService.cancelRequest()
+    }
 }
 
 extension ShopsInteractor: CLLocationManagerDelegate {
@@ -66,6 +90,8 @@ extension ShopsInteractor: CLLocationManagerDelegate {
         if let location = locations.first, isFirstUpdateLocation {
             isFirstUpdateLocation = false
             output?.didUpdateLocation(location: location)
+            defferredGetShops?()
+            defferredGetShops = nil
         }
     }
     

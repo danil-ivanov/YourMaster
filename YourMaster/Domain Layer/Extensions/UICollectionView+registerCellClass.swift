@@ -17,4 +17,8 @@ public extension UICollectionView {
         self.register(nib, forCellWithReuseIdentifier: identifier)
     }
     
+    func registerReusableViewClass(_ reusableViewClass: AnyClass, kind: String) {
+        let identifier = String.className(reusableViewClass)
+        register(reusableViewClass, forSupplementaryViewOfKind: kind, withReuseIdentifier: identifier)
+    }
 }

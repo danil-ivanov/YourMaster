@@ -3,6 +3,7 @@
 import Foundation
 
 struct ShopRequest: Request {
+
     var path: String = "shops"
     
     var method: HTTPMethod = .get
@@ -12,8 +13,7 @@ struct ShopRequest: Request {
     }
     
     var headers: [String: String] {
-        let token = UserDefaults.standard.string(forKey: AppDefaults.UserDefaults.token)
-        return [AppDefaults.UserDefaults.token: token ?? ""]
+        return [AppDefaults.UserDefaults.token: AppShared.storage.token ?? ""]
     }
     
     let location: Location

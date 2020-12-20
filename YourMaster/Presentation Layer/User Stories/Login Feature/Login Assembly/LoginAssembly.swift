@@ -15,10 +15,9 @@ final class LoginAssembly {
     private lazy var authorizationService: AuthorizationServiceProtocol = serviceAssembly.authorizationService()
     
     private lazy var flowCoordinator: LoginFlowCoordinator = {
-        let coordinator = LoginFlowCoordinator()
         let interactor = LoginInteractor(authorizationService: authorizationService)
-        coordinator.interactor = interactor
-        coordinator.router = LoginFeatureRouter(assembly: self)
+        let coordinator = LoginFlowCoordinator(router: LoginFeatureRouter(assembly: self),
+                                               interactor: interactor)
         interactor.output = coordinator
         return coordinator
     }()
@@ -40,21 +39,17 @@ extension LoginAssembly: LoginFlowCoordinatorAssemblyProtocol {
 
 extension LoginAssembly: LoginAssemblyProtocol {
     func loginViewController() -> LoginViewController {
-        let presenter = LoginPresenter()
-        let controller = LoginViewController()
-        controller.output = presenter
+        let presenter = LoginPresenter(output: flowCoordinator)
+        let controller = LoginViewController(output: presenter)
         presenter.view = controller
-        presenter.output = flowCoordinator
         flowCoordinator.loginPresenter = presenter
         return controller
     }
     
     func verifyViewController(with phone: String) -> VerifyViewController {
-        let presenter = VerifyPresenter(phone: phone)
-        let controller = VerifyViewController()
-        controller.output = presenter
+        let presenter = VerifyPresenter(phone: phone, output: flowCoordinator)
+        let controller = VerifyViewController(output: presenter)
         presenter.view = controller
-        presenter.output = flowCoordinator
         flowCoordinator.verifyPresenter = presenter
         return controller
     }

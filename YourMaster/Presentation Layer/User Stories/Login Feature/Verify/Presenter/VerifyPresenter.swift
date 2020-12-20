@@ -6,13 +6,14 @@ protocol VerifyPresenterOutput: AnyObject {
 }
 
 final class VerifyPresenter {
-    var output: VerifyPresenterOutput?
+    private let output: VerifyPresenterOutput
     weak var view: VerifyViewInput?
     
     let phone: String
     
-    init(phone: String) {
+    init(phone: String, output: VerifyPresenterOutput) {
         self.phone = phone
+        self.output = output
     }
 }
 
@@ -32,11 +33,11 @@ extension VerifyPresenter: VerifyViewOutput {
     }
     
     func didRequestVerify(code: String) {
-        output?.didRequestVerify(code: code, phone: phone)
+        output.didRequestVerify(code: code, phone: phone)
     }
     
     func didRequestResendSMS() {
         view?.hideResendButtonWhenRequest()
-        output?.didRequestResendSMS(phone: phone)
+        output.didRequestResendSMS(phone: phone)
     }
 }

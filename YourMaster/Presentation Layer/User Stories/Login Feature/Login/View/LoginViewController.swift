@@ -13,10 +13,11 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var numberTextField: UITextField!
     @IBOutlet private weak var continueButton: UIButton!
     
-    var output: LoginViewOutput?
+    private let output: LoginViewOutput
     private let maxNumbersCount = 18
     
-    init() {
+    init(output: LoginViewOutput) {
+        self.output = output
         super.init(nibName: LoginViewController.identifier, bundle: nil)
     }
     
@@ -75,7 +76,7 @@ final class LoginViewController: UIViewController {
             return
         }
         let filteredPhone = phone.filter("+0123456789".contains)
-        output?.didRequesLogin(with: filteredPhone)
+        output.didRequesLogin(with: filteredPhone)
     }
 }
 

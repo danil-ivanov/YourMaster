@@ -15,7 +15,7 @@ protocol ShopsMapViewOutput: AnyObject {
 }
 
 final class ShopsMapViewController: UIViewController {
-    var output: ShopsMapViewOutput?
+    private let output: ShopsMapViewOutput
     
     private lazy var mapView: GMSMapView = {
         return GMSMapView(frame: view.bounds)
@@ -30,7 +30,8 @@ final class ShopsMapViewController: UIViewController {
     
     private var maxZoom: Float = 0
     
-    init() {
+    init(output: ShopsMapViewOutput) {
+        self.output = output
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -40,10 +41,10 @@ final class ShopsMapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        output?.viewDidLoad(mapView: mapView, mapDelegate: self)
+        output.viewDidLoad(mapView: mapView, mapDelegate: self)
         mapView.delegate = self
-        output?.didRequestLocation()
-        output?.didRequestShops()
+        output.didRequestLocation()
+        output.didRequestShops()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,7 +52,7 @@ final class ShopsMapViewController: UIViewController {
         if children.contains(where: { $0 is ShopsListViewController }) {
             return
         }
-        output?.setupShopsList()
+        output.setupShopsList()
     }
     
     private func applyStyles() {
@@ -92,12 +93,12 @@ extension ShopsMapViewController: ShopsMapViewInput {
 extension ShopsMapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, willMove gesture: Bool) {
         if gesture {
-            output?.didBeginDraggingMap()
+            output.didBeginDraggingMap()
         }
     }
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        output?.didEndDraggingMap()
+        output.didEndDraggingMap()
     }
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {

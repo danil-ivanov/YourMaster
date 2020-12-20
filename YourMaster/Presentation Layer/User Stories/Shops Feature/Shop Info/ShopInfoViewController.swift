@@ -14,7 +14,7 @@ protocol ShopInfoViewOutput: AnyObject {
 
 final class ShopInfoViewController: UIViewController {
     
-    var output: ShopInfoViewOutput?
+    private let output: ShopInfoViewOutput
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -23,10 +23,24 @@ final class ShopInfoViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
-
+    
+    init(output: ShopInfoViewOutput) {
+        self.output = output
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        output?.configure()
+        output.configure()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,7 +81,6 @@ final class ShopInfoViewController: UIViewController {
         appearance.backgroundColor = .white
         appearance.shadowColor = .clear
         navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.delegate = self
     }
 }
 
@@ -91,38 +104,38 @@ extension ShopInfoViewController: ShopInfoViewInput {
 
 extension ShopInfoViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return output?.numberOfSections ?? 0
+        return output.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return output?.numberOfRows(in: section) ?? 0
+        return output.numberOfRows(in: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let identifier = output?.identifierForCell(at: indexPath.row, in: indexPath.section),
-              let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? TableCell else {
+        let identifier = output.identifierForCell(at: indexPath.row, in: indexPath.section)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? TableCell else {
             return UITableViewCell()
         }
-        output?.configure(cell: cell, at: indexPath.row, in: indexPath.section)
+        output.configure(cell: cell, at: indexPath.row, in: indexPath.section)
         return cell
     }
 }
 
 extension ShopInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return output?.heightForHeader(in: section) ?? 0
+        return output.heightForHeader(in: section)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: StandardTextSection.cellIdentifier) as? TableSection else {
             return UIView()
         }
-        output?.congigure(header: header, in: section)
+        output.congigure(header: header, in: section)
         return header
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        output?.didSelectRow(indexPath.row, in: indexPath.section)
+        output.didSelectRow(indexPath.row, in: indexPath.section)
     }
 }
 

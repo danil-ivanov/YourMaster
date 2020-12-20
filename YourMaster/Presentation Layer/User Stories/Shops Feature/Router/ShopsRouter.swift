@@ -10,6 +10,7 @@ protocol ShopsRouterInput {
     func showDescriptionViewer(description: String)
     func showPhotosViewer()
     func showReviewsView()
+    func showServices(of shop: Shop)
 }
 
 final class ShopsRouter: ShopsRouterInput {
@@ -50,5 +51,10 @@ final class ShopsRouter: ShopsRouterInput {
     
     func showReviewsView() {
         
+    }
+    
+    func showServices(of shop: Shop) {
+        let controller = assembly.shopServicesController(with: shop)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

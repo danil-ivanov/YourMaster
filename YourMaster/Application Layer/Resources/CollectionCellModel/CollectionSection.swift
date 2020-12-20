@@ -1,12 +1,15 @@
-
+//
+//  CollectionSection.swift
+//  YourMaster
+//
+//  Created by Maxim Egorov on 10.12.2020.
+//  Copyright © 2020 Maxim Egorov. All rights reserved.
+//
 
 import UIKit
 
-protocol SectionRepresentable {
-    var model: SectionIdentifiable? { get set }
-}
 
-open class TableSection: UITableViewHeaderFooterView, SectionRepresentable {
+open class CollectionSection: UICollectionReusableView, SectionRepresentable {
     
     class public var cellIdentifier: String {
         return String.className(self)
@@ -18,14 +21,14 @@ open class TableSection: UITableViewHeaderFooterView, SectionRepresentable {
         }
     }
     
-    var rows: [TableCellIdentifiable] = []
+    var rows: [CollectionCellIdentifiable] = []
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    public override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
         setupView()
     }
     

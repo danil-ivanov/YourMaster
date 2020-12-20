@@ -10,7 +10,7 @@ open class CollectionCell: UICollectionViewCell, TableCellRepresentable {
     }
     
     // MARK: - Props
-    public var model: TableCellIdentifiable? {
+    public var model: CellIdentifiable? {
         didSet {
             updateViews()
         }
