@@ -81,7 +81,17 @@ final class ShopInfoViewController: UIViewController {
         appearance.backgroundColor = .white
         appearance.shadowColor = .clear
         navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.delegate = self
+		let addToFav = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+		addToFav.setImage(UIImage(named: "notSelectedFav"), for: .normal)
+		addToFav.addTarget(self, action: #selector(addToFavAction), for: .touchUpInside)
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addToFav)
     }
+	
+	@objc func addToFavAction() {
+		let nc = NotificationCenter.default
+		nc.post(name: Notification.Name("AddToFav"), object: nil)
+	}
 }
 
 extension ShopInfoViewController: ShopInfoViewInput {
