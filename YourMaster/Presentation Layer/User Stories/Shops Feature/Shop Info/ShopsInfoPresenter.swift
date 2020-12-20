@@ -31,14 +31,14 @@ final class ShopInfoPresenter {
     }
 	
 	@objc func addToFavAction() {
-//		if let data = UserDefaults.standard.value(forKey:"favShops") as? Data {
-//			var shops = try? PropertyListDecoder().decode(Array<Shop>.self, from: data)
-//			shops?.append(shop)
-//			UserDefaults.standard.set(try? PropertyListEncoder().encode(shops), forKey:"shops")
-//		} else {
-//			let shops = [shop]
-//			UserDefaults.standard.set(try? PropertyListEncoder().encode(shops), forKey:"shops")
-//		}
+		if let data = UserDefaults.standard.value(forKey:"favShops") as? Data {
+			var shops = try? PropertyListDecoder().decode(Array<Shop>.self, from: data)
+			shops?.append(shop)
+			UserDefaults.standard.set(try? PropertyListEncoder().encode(shops), forKey:"favShops")
+		} else {
+			let shops = [shop]
+			UserDefaults.standard.set(try? PropertyListEncoder().encode(shops), forKey:"favShops")
+		}
 	}
     
     private func prepareModels() {

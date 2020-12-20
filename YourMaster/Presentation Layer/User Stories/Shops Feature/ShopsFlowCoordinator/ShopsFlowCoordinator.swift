@@ -34,7 +34,7 @@ extension ShopsFlowCoordinator: ShopsMapPresenterOutput {
     }
     
     func didRequestShops() {
-        interactor.getShops(radius: 100000)
+        interactor.getShops(radius: 10000000)
     }
     
     func didRequestLocation() {
