@@ -24,6 +24,6 @@ struct Shop {
     }
 }
 
-extension Shop: Decodable {}
-extension Shop.Contacts: Decodable {}
-extension Shop.Location: Decodable {}
+extension Shop: Codable {}
+extension Shop.Contacts: Codable {}
+extension Shop.Location: Codable {}

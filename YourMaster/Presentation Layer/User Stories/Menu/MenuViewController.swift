@@ -19,7 +19,7 @@ final class MenuViewController: UIViewController {
         return tableView
     }()
 	
-	let dataArr = ["Профиль", "Помощь", "Условия пользования", "Поделиться"]
+	let dataArr = ["Профиль", "Помощь", "Условия пользования", "Поделиться", "Избранное"]
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -106,7 +106,7 @@ final class MenuViewController: UIViewController {
 
 extension MenuViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 4
+		return 5
 	}
 	
 	
@@ -129,6 +129,9 @@ extension MenuViewController: UITableViewDelegate {
 			open(with: URL(string: "https://ihubltd.com/vpn_policy")!)
 		} else if indexPath.item == 3 {
 			share(sender: UIView())
+		} else if indexPath.item == 4 {
+			let newViewController = FavoriteShopViewController(nibName: "FavoriteShopViewController", bundle: nil)
+			self.present(newViewController, animated: true, completion: nil)
 		}
 	}
 }

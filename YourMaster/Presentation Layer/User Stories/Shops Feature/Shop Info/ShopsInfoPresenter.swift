@@ -25,8 +25,21 @@ final class ShopInfoPresenter {
         self.output = output
         self.shop = shop
         self.sectionModels = []
+		let nc = NotificationCenter.default
+		nc.addObserver(self, selector: #selector(addToFavAction), name: Notification.Name("AddToFav"), object: nil)
         prepareModels()
     }
+	
+	@objc func addToFavAction() {
+		if let data = UserDefaults.standard.value(forKey:"favShops") as? Data {
+			var shops = try? PropertyListDecoder().decode(Array<Shop>.self, from: data)
+			shops?.append(shop)
+			UserDefaults.standard.set(try? PropertyListEncoder().encode(shops), forKey:"favShops")
+		} else {
+			let shops = [shop]
+			UserDefaults.standard.set(try? PropertyListEncoder().encode(shops), forKey:"favShops")
+		}
+	}
     
     private func prepareModels() {
         let baseModel = StandardTextSectionModel(title: "", height: 0.0)

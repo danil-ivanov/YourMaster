@@ -15,6 +15,7 @@ protocol ShopInfoViewOutput: AnyObject {
 final class ShopInfoViewController: UIViewController {
     
     private let output: ShopInfoViewOutput
+	let addToFav = UIButton(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -81,7 +82,17 @@ final class ShopInfoViewController: UIViewController {
         appearance.backgroundColor = .white
         appearance.shadowColor = .clear
         navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.delegate = self
+		addToFav.setImage(UIImage(named: "notSelectedFav"), for: .normal)
+		addToFav.addTarget(self, action: #selector(addToFavAction), for: .touchUpInside)
+		self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addToFav)
     }
+	
+	@objc func addToFavAction() {
+		let nc = NotificationCenter.default
+		nc.post(name: Notification.Name("AddToFav"), object: nil)
+		addToFav.setImage(UIImage(named: "selectedFav"), for: .normal)
+	}
 }
 
 extension ShopInfoViewController: ShopInfoViewInput {
