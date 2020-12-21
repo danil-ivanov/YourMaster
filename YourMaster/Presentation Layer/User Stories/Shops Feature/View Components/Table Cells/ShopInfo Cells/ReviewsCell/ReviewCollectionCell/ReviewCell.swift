@@ -2,7 +2,7 @@
 
 import UIKit
 
-final class ReviewCollectionCell: CollectionCell {
+final class ReviewCell: TableCell {
     
     override class var cellIdentifier: String {
         return String.className(self)
@@ -29,7 +29,7 @@ final class ReviewCollectionCell: CollectionCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Все понравилось"
         label.font = SFUIDisplay.regular.font(size: 16)
-        label.numberOfLines = 3
+        label.numberOfLines = 0
         return label
     }()
     
@@ -39,6 +39,7 @@ final class ReviewCollectionCell: CollectionCell {
         label.font = SFUIDisplay.regular.font(size: 16)
         label.textColor = .systemBlue
         label.text = "Показать больше"
+        label.isHidden = true
         return label
     }()
     
@@ -49,13 +50,11 @@ final class ReviewCollectionCell: CollectionCell {
         view.fullImage = AppAssets.rating?.tint(with: .systemYellow)
         view.emptyImage = AppAssets.rating?.tint(with: .systemGray5)
         view.rating = 4.5
-        view.backgroundColor = .systemGray6
         return view
     }()
     
     override func setupView() {
-        layer.cornerRadius = 10
-        backgroundColor = .systemGray6
+        layer.cornerRadius = 1
         addSubview(dateLabel)
         addSubview(userLabel)
         addSubview(ratingView)
@@ -68,7 +67,7 @@ final class ReviewCollectionCell: CollectionCell {
             userLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -10),
                                         
             dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            dateLabel.topAnchor.constraint(equalTo: userLabel.topAnchor),
+            dateLabel.topAnchor.constraint(equalTo: ratingView.topAnchor),
         
             ratingView.topAnchor.constraint(equalTo: userLabel.bottomAnchor, constant: 10),
             ratingView.leadingAnchor.constraint(equalTo: userLabel.leadingAnchor),
@@ -85,15 +84,11 @@ final class ReviewCollectionCell: CollectionCell {
     }
     
     override func updateViews() {
-        guard let model = self.model as? ReviewCollectionCellModel else {
+        guard let model = self.model as? ReviewCellModel else {
             return
         }
-        reviewLabel.text = model.review
-        reviewLabel.layoutIfNeeded()
-        if reviewLabel.isTruncated {
-            moreLabel.isHidden = false
-            return
-        }
-        moreLabel.isHidden = true
+        userLabel.text = model.review.user.name
+        reviewLabel.text = model.review.message
+        ratingView.rating = model.review.rating
     }
 }

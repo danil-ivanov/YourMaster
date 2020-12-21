@@ -9,7 +9,7 @@ extension StyleWrapper where Element: UIButton {
         return .wrap { button in
             button.isUserInteractionEnabled = true
             UIView.animate(withDuration: 0.3) {
-                button.backgroundColor = AppTheme.accentColor
+                button.backgroundColor = AppColors.accentColor
             }
         }
     }

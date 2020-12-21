@@ -5,6 +5,7 @@ import GoogleMapsUtils
 protocol ShopsInteractorOutput: AnyObject {
     func didReceiveShops(shops: [Shop])
     func didReceiveServices(servicesDict: [String: [Service]])
+    func didReceiveReviews(reviews: [Review])
     func didReceiveErrorMessage(message: String)
     func didUpdateLocation(location: CLLocation)
 }
@@ -68,6 +69,17 @@ extension ShopsInteractor: ShopsInteractorInput {
             switch result {
             case .success(let servicesDict):
                 self?.output?.didReceiveServices(servicesDict: servicesDict)
+            case .failure(let error):
+                self?.output?.didReceiveErrorMessage(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func getReviews(for shopId: Int) {
+        shopService.getReviews(shopId: shopId) { [weak self] result in
+            switch result {
+            case .success(let reviews):
+                self?.output?.didReceiveReviews(reviews: reviews)
             case .failure(let error):
                 self?.output?.didReceiveErrorMessage(message: error.localizedDescription)
             }

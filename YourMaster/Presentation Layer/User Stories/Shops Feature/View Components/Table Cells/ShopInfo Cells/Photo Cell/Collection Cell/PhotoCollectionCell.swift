@@ -13,6 +13,7 @@ final class PhotoCollectionCell: CollectionCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 10
         imageView.backgroundColor = .purple
+        imageView.image = AppAssets.avatarMock
         return imageView
     }()
     

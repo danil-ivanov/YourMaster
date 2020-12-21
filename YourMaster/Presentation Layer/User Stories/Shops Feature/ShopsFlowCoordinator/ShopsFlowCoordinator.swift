@@ -8,6 +8,9 @@ final class ShopsFlowCoordinator {
     weak var listPresenter: ShopsListPresenter?
     weak var infoPresenter: ShopInfoPresenter?
     weak var servicesPresenter: ServicesPresenterInput?
+    weak var reviewsPresenter: ReviewsPresenterInput?
+    
+    
     private let router: ShopsRouterInput
     private let interactor: ShopsInteractorInput
     
@@ -65,6 +68,10 @@ extension ShopsFlowCoordinator: ShopsInteractorOutput {
     func didUpdateLocation(location: CLLocation) {
         mapPresenter?.presentMyLocation(location: location)
     }
+    
+    func didReceiveReviews(reviews: [Review]) {
+        reviewsPresenter?.presentReviews(reviews: reviews)
+    }
 }
 
 extension ShopsFlowCoordinator: ShopsListPresenterOutput {
@@ -102,12 +109,16 @@ extension ShopsFlowCoordinator: ShopInfoPresenterOutput {
         
     }
     
-    func showReviewsView() {
-        
+    func showReviewsView(shopId: Int) {
+        router.showReviewsViewer(shopId: shopId)
     }
     
     func showServices(of shop: Shop) {
         router.showServices(of: shop)
+    }
+    
+    func getUserLocation() -> CLLocation {
+        interactor.getCurrentLocation()!
     }
 }
 
@@ -119,5 +130,11 @@ extension ShopsFlowCoordinator: ServicesPresenterOutput {
 
     func servicesDidClose() {
         interactor.cancelServicesRequest()
+    }
+}
+
+extension ShopsFlowCoordinator: ReviewsPresenterOutput {
+    func didRequestReviews(for shopId: Int) {
+        interactor.getReviews(for: shopId)
     }
 }

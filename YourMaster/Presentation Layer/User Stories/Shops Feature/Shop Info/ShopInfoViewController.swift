@@ -67,7 +67,7 @@ final class ShopInfoViewController: UIViewController {
         tableView.registerHeaderFooterViewClass(StandardTextSection.self)
         tableView.registerCellClass(ContactCell.self)
         tableView.registerCellClass(ServicesCell.self)
-        tableView.registerCellClass(ReviewsCell.self)
+        tableView.registerCellClass(ReviewsAndDistanceCell.self)
     }
     
     private func setupNavigationBar() {

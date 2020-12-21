@@ -48,4 +48,19 @@ struct AppAssets {
     static var whatsApp: UIImage? {
         return UIImage(named: "whatsapp")
     }
+    
+    /// иконка отзывов
+    static var reviewsEllipse: UIImage? {
+        return UIImage(named: "starEllipse")
+    }
+    
+    /// иконка расстояния
+    static var distanceEllipse: UIImage? {
+        return UIImage(named: "distanceEllipse")
+    }
+    
+    /// заглущка для аватарки
+    static var avatarMock: UIImage? {
+        return UIImage(named: "avatarMock")
+    }
 }
