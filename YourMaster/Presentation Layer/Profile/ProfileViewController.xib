@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="avatarImage" destination="ZXj-Va-WAb" id="UZO-Vo-Xaz"/>
                 <outlet property="emailButton" destination="37E-U8-Cxw" id="yd1-2X-diD"/>
+                <outlet property="logoutButton" destination="V6I-8S-cAx" id="ClS-hA-3AA"/>
                 <outlet property="nameButton" destination="Hso-gD-FNl" id="4Ji-GW-Bl6"/>
                 <outlet property="numberButton" destination="dhs-Fh-mUf" id="Yro-Cf-p2W"/>
                 <outlet property="view" destination="Z4a-v1-S5y" id="p9N-4e-Mb5"/>

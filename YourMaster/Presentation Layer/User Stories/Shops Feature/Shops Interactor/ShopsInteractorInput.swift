@@ -7,5 +7,6 @@ protocol ShopsInteractorInput: AnyObject {
     func requestLocation()
     func getCurrentLocation() -> CLLocation?
     func getServices(for shop: Shop)
+    func getReviews(for shopId: Int)
     func cancelServicesRequest()
 }

@@ -13,6 +13,7 @@ class ShopCell: TableCell {
     
     override func setupView() {
         shopImageView.layer.cornerRadius = 10
+        shopImageView.image = AppAssets.avatarMock
         shopNameLabel.font = SFUIDisplay.bold.font(size: 17)
         adressLabel.font = SFUIDisplay.regular.font(size: 14)
     }

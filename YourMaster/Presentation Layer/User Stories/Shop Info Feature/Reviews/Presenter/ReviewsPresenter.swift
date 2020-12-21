@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ReviewsPresenterOutput: AnyObject {
-    func didRequestReviews()
+    func didRequestReviews(for shopId: Int)
 }
 
 final class ReviewsPresenter {
@@ -17,11 +17,25 @@ final class ReviewsPresenter {
     weak var view: ReviewsViewInput?
     
     private let output: ReviewsPresenterOutput
-    private var sectionModels: [TableSectionModel]
-
-    init(output: ReviewsPresenterOutput) {
+    private let shopId: Int
+    private var sectionModels: [TableSectionModel] {
+        didSet {
+            view?.presentReviews()
+        }
+    }
+    
+    init(output: ReviewsPresenterOutput, shopId: Int) {
         self.output = output
+        self.shopId = shopId
         self.sectionModels = []
+    }
+}
+
+extension ReviewsPresenter: ReviewsPresenterInput {
+    func presentReviews(reviews: [Review]) {
+        let sectionModel = StandardTextSectionModel(title: "Отызвы \(reviews.count)", height: 50)
+        sectionModel.cellModels = reviews.map({ ReviewCellModel(review: $0) })
+        sectionModels = [sectionModel]
     }
 }
 
@@ -32,7 +46,7 @@ extension ReviewsPresenter: ReviewsViewOutput {
     }
     
     func didRequestReviews() {
-        output.didRequestReviews()
+        output.didRequestReviews(for: shopId)
     }
     
     var numberOfSections: Int {

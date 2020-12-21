@@ -5,9 +5,9 @@ final class ReviewCellModel: TableCellModel {
         return ReviewCell.cellIdentifier
     }
     
-    let review: String
+    let review: Review
     
-    init(review: String) {
+    init(review: Review) {
         self.review = review
     }
 }

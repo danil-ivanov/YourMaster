@@ -6,6 +6,7 @@ protocol ShopsAssemblyProtocol {
     func shopsListViewController() -> ShopsListViewController
     func shopInfoViewController(with shop: Shop) -> ShopInfoViewController
     func shopServicesController(with shop: Shop) -> ServicesViewController
+    func shopReviewsController(with shopId: Int) -> ReviewsViewController
 }
 
 ///Протокол сущности, которая собирает коордиантор

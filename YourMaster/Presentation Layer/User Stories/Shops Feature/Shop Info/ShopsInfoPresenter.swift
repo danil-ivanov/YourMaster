@@ -1,12 +1,14 @@
 
 
 import UIKit
+import GoogleMaps
 
 protocol ShopInfoPresenterOutput: AnyObject {
     func showDescriptionViewer(description: String)
     func showPhotosViewer()
-    func showReviewsView()
+    func showReviewsView(shopId: Int)
     func showServices(of shop: Shop)
+    func getUserLocation() -> CLLocation
 }
 
 final class ShopInfoPresenter {
@@ -50,21 +52,24 @@ final class ShopInfoPresenter {
         descriptionModel.cellModels.append(descriptionCellModel)
         
         let contactsModel = StandardTextSectionModel(title: "Контакты", height: 50.0)
-        contactsModel.cellModels.append(ContactCellModel(contact: "+79697298209"))
-        contactsModel.cellModels.append(ContactCellModel(contact: "www.instagram.com/sequoiaspb/"))
+        contactsModel.cellModels.append(ContactCellModel(contact: shop.contacts.phone))
+        contactsModel.cellModels.append(ContactCellModel(contact: shop.contacts.instagramUrl))
         
         let photoModel = StandardTextSectionModel(title: "Фото", height: 50.0, moreButtonNeeded: true)
         photoModel.cellModels.append(PhotoShopInfoCellModel())
-        photoModel.action = { [weak self] in
-            self?.output.showPhotosViewer()
-        }
+        photoModel.action = { self.output.showPhotosViewer() }
         
         let reviewsModel = StandardTextSectionModel(title: "", height: 0)
-        reviewsModel.cellModels.append(ReviewsAndDistanceCellModel(rating: 4.7, distance: 5.3, reviewsCount: 43))
-        reviewsModel.cellModels.append(ServicesCellModel())
-//        reviewsModel.action = { [weak self] in
-//            self?.output?.showReviewsView()
-//        }
+        let userLocation = output.getUserLocation()
+        let reviewAndDistanceCell = ReviewsAndDistanceCellModel(rating: Float(shop.rating.total),
+                                                                distance: shop.getDistance(from: userLocation) / 1000,
+                                                                reviewsCount: 3)
+        let servicesCell = ServicesCellModel()
+        reviewsModel.cellModels.append(reviewAndDistanceCell)
+        reviewsModel.cellModels.append(servicesCell)
+        
+        reviewAndDistanceCell.reviewsTap = { self.output.showReviewsView(shopId: self.shop.id) }
+        servicesCell.action = { self.output.showServices(of: self.shop) }
     
         sectionModels = [baseModel, reviewsModel, descriptionModel, contactsModel, photoModel]
     }

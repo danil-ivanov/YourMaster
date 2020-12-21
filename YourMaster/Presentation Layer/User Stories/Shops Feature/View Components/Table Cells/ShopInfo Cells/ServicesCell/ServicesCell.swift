@@ -23,10 +23,10 @@ final class ServicesCell: TableCell {
     override func setupView() {
         contentView.addSubview(button)
         NSLayoutConstraint.activate([
-            button.topAnchor.constraint(equalTo: topAnchor, constant: 30),
+            button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
             button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             button.heightAnchor.constraint(equalToConstant: 55)])
         
         setupAction()

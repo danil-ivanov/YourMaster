@@ -13,6 +13,9 @@ class ProfileViewController: UIViewController {
 	@IBOutlet var nameButton: UIButton!
 	@IBOutlet var numberButton: UIButton!
 	@IBOutlet var avatarImage: UIImageView!
+    @IBOutlet var logoutButton: UIButton!
+    
+    var isRegistration = false
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -22,6 +25,9 @@ class ProfileViewController: UIViewController {
 		numberButton.setTitle(AppShared.storage.user?.phone, for: .normal)
 		nameButton.setTitle(name, for: .normal)
 		emailButton.setTitle(email, for: .normal)
+        navigationItem.title = "Регистрация"
+        logoutButton.isHidden = isRegistration
+        
 	}
 	
 	@IBAction func inputNameAction(_ sender: Any) {

@@ -18,9 +18,10 @@ final class ReviewsViewController: UIViewController {
     private let output: ReviewsViewOutput
     
     private let tableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
         return tableView
     }()
     
@@ -61,6 +62,7 @@ extension ReviewsViewController: ReviewsViewInput {
         view.backgroundColor = .white
         navigationItem.title = "Отзывы"
         setupViews()
+        registerTableView()
     }
     
     func presentReviews() {

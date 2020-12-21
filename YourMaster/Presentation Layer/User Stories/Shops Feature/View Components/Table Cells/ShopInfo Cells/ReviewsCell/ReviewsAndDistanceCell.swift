@@ -97,11 +97,12 @@ final class ReviewsAndDistanceCell: TableCell {
     override func setupView() {
         contentView.addSubview(reviewsView)
         contentView.addSubview(distanceView)
+        setupGestureRecognizer()
         NSLayoutConstraint.activate([
-            reviewsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            reviewsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             reviewsView.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            distanceView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -38),
+            distanceView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -45),
             distanceView.centerYAnchor.constraint(equalTo: centerYAnchor),
             distanceView.leadingAnchor.constraint(equalTo: reviewsView.trailingAnchor, constant: 54),
             distanceView.widthAnchor.constraint(equalTo: reviewsView.widthAnchor)
@@ -116,7 +117,7 @@ final class ReviewsAndDistanceCell: TableCell {
         reviewsView.title = String(model.rating)
         reviewsView.subtitle = String(model.reviewsCount) + " " + reviewsString(from: model.reviewsCount)
         distanceView.image = AppAssets.distanceEllipse
-        distanceView.title = String(model.distance) + " км"
+        distanceView.title = String(format: "%.1f", model.distance) + " км"
         distanceView.subtitle = "расстояние"
     }
     
@@ -129,5 +130,15 @@ final class ReviewsAndDistanceCell: TableCell {
             return "отзыва"
         }
         return "отзывов"
+    }
+    
+    private func setupGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(gestureDidTap))
+        reviewsView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func gestureDidTap() {
+        (model as? ReviewsAndDistanceCellModel)?.reviewsTap?()
     }
 }

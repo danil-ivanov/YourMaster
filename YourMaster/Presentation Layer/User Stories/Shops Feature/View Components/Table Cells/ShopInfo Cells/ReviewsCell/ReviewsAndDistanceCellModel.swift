@@ -1,4 +1,5 @@
 
+
 final class ReviewsAndDistanceCellModel: TableCellModel {
     override var cellIdentifier: String {
         return ReviewsAndDistanceCell.cellIdentifier
@@ -7,6 +8,8 @@ final class ReviewsAndDistanceCellModel: TableCellModel {
     let rating: Float
     let reviewsCount: Int
     let distance: Float
+    
+    var reviewsTap: (() -> Void)?
     
     init(rating: Float, distance: Float, reviewsCount: Int) {
         self.rating = rating
